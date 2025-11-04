@@ -7,22 +7,57 @@ public class ScreenLetterDisplayer : MonoBehaviour
 {
     // You need a word bank.
     public TextMeshPro textMeshProText = null;
+    public int emailSentCounter;
+    public TextMeshPro counterDisplay;
 
     private string remainingWord = string.Empty;
     private string currentWord;
-    public List<string> wordBank;
+    public float difficultyLevel;
+    public List<string> wordBankEasy;
+    public List<string> wordBankMedium;
+    public List<string> wordBankHard;
 
 
     void Start()
     {
+        difficultyLevel = 0;
         SetCurrentWord();
     }
 
     private void SetCurrentWord()
     {
-        // Get bank word.
-        currentWord = wordBank[Random.Range(0, wordBank.Count)];
-        SetRemainingWord(currentWord);
+
+        // Set difficulty
+
+        if (emailSentCounter == 7)
+        {
+            difficultyLevel = 1;
+        }
+
+        if (emailSentCounter == 14)
+        {
+            difficultyLevel = 2;
+        }
+
+        // Get bank word
+
+        if (difficultyLevel == 0) 
+        {
+            currentWord = wordBankEasy[Random.Range(0, wordBankEasy.Count)];
+            SetRemainingWord(currentWord);
+        }
+
+        if (difficultyLevel == 1)
+        {
+            currentWord = wordBankMedium[Random.Range(0, wordBankMedium.Count)];
+            SetRemainingWord(currentWord);
+        }
+
+        if (difficultyLevel == 2)
+        {
+            currentWord = wordBankHard[Random.Range(0, wordBankHard.Count)];
+            SetRemainingWord(currentWord);
+        }
     }
 
     private void SetRemainingWord(string newString)
@@ -55,6 +90,8 @@ public class ScreenLetterDisplayer : MonoBehaviour
 
             if (IsWordComplete())
             {
+                emailSentCounter += 1;
+                counterDisplay.text = emailSentCounter.ToString();
                 SetCurrentWord();
             }
         }

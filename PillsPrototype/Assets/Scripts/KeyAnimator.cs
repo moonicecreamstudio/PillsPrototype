@@ -12,14 +12,12 @@ public class KeyAnimator : MonoBehaviour
     public Renderer keyRenderer;
     public float pressDistance;
 
-    // Start is called before the first frame update
     void Start()
     {
         textMeshProText.text = letter.ToUpper();
         keyRenderer = keyModel.GetComponent<Renderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(letter))
