@@ -11,6 +11,7 @@ public class TaskManager : MonoBehaviour
     public float timer;
     public float timeToSpawnText;
     public List<string> taskTexts = new List<string>();
+    public List<GameObject> tasks = new List<GameObject>();
 
     void Update()
     {
@@ -18,11 +19,13 @@ public class TaskManager : MonoBehaviour
 
         if (timer >= timeToSpawnText)
         {
+            var taskName = taskTexts[Random.Range(0, taskTexts.Count)];
             GameObject newTextGameObject = Instantiate(taskText, clipboardPanel);
+            newTextGameObject.name = taskName;
+            tasks.Add(newTextGameObject);
             TextMeshProUGUI tmpText = newTextGameObject.GetComponentInChildren<TextMeshProUGUI>();
-            tmpText.text = taskTexts[Random.Range(0, taskTexts.Count)];
+            tmpText.text = taskName;
             timer = 0;
         }
-
     }
 }

@@ -13,10 +13,12 @@ public class TaskTextController : MonoBehaviour
     public float duration;
     public float randomizedDespawnTime;
     public Slider slider;
+    public TaskManager taskManager;
 
     void Start()
     {
         duration += Random.Range(-randomizedDespawnTime, randomizedDespawnTime); // Different spawning time
+        taskManager = transform.parent.GetComponent<TaskManager>();
         slider.maxValue = duration;
         slider.value = duration; 
         StartCoroutine(ChangeColor());
@@ -37,6 +39,7 @@ public class TaskTextController : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
+        taskManager.tasks.Remove(gameObject);
         Destroy(gameObject);
     }
 }

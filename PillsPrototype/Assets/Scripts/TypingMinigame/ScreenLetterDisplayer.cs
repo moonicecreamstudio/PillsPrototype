@@ -17,6 +17,7 @@ public class ScreenLetterDisplayer : MonoBehaviour
     public List<string> wordBankMedium;
     public List<string> wordBankHard;
 
+    public TaskManager taskManager;
 
     void Start()
     {
@@ -91,6 +92,7 @@ public class ScreenLetterDisplayer : MonoBehaviour
             if (IsWordComplete())
             {
                 emailSentCounter += 1;
+                TaskComplete();
                 counterDisplay.text = emailSentCounter.ToString();
                 SetCurrentWord();
             }
@@ -111,6 +113,16 @@ public class ScreenLetterDisplayer : MonoBehaviour
     private bool IsWordComplete()
     {
         return remainingWord.Length == 0;
+    }
+
+    private void TaskComplete()
+    {
+        if (taskManager.tasks.Count > 0)
+        {
+            GameObject first = taskManager.tasks[0];
+            taskManager.tasks.RemoveAt(0);
+            Destroy(first);
+        }
     }
 
 }

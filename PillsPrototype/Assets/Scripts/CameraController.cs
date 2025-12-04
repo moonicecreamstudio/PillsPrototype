@@ -15,6 +15,10 @@ public class CameraController : MonoBehaviour
 
     public ClockManager focusSlider;
 
+    public ButtonAnimator sortButton;
+    public ButtonAnimator hireButton;
+
+    public TaskManager taskManager;
 
     private void Start()
     {
@@ -38,7 +42,12 @@ public class CameraController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            
+
             Ray raycast = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+
+            // Check if pills has beenn clicked
+
             if (Physics.Raycast(raycast, out RaycastHit hit, 100f))
             {
                 Debug.Log("Clicked object: " + hit.collider.name);
@@ -48,9 +57,31 @@ public class CameraController : MonoBehaviour
                     Debug.Log("Consumed focus pills.");
                     focusSlider.timer = 20;
                 }
+
+                if (hit.collider.CompareTag("Sort Complete Button"))
+                {
+                    Debug.Log("Sort complete.");
+                    sortButton.StartCoroutine(sortButton.ButtonPressed());
+                    if (taskManager.tasks.Count > 0)
+                    {
+                        GameObject first = taskManager.tasks[0];
+                        taskManager.tasks.RemoveAt(0);
+                        Destroy(first);
+                    }
+                }
+
+                if (hit.collider.CompareTag("Hire Complete Button"))
+                {
+                    Debug.Log("Hire complete.");
+                    hireButton.StartCoroutine(hireButton.ButtonPressed());
+                    if (taskManager.tasks.Count > 0)
+                    {
+                        GameObject first = taskManager.tasks[0];
+                        taskManager.tasks.RemoveAt(0);
+                        Destroy(first);
+                    }
+                }
             }
         }
-
-
     }
 }
