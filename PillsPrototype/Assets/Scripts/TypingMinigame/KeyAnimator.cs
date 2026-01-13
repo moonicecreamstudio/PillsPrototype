@@ -5,11 +5,14 @@ using UnityEngine;
 
 public class KeyAnimator : MonoBehaviour
 {
-    public string letter;
+    [Header("References")]
     public TextMeshPro textMeshProText;
     public GameObject keyPivot;
     public GameObject keyModel;
     public Renderer keyRenderer;
+
+    [Header("Parameters")]
+    public string letter;
     public float pressDistance;
 
     void Start()

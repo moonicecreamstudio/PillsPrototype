@@ -8,6 +8,8 @@ TagManager:
   - Sort Complete Button
   - Hire Complete Button
   - Clipboard
+  - Calmness Pill
+  - Energy Pill
   layers:
   - Default
   - TransparentFX

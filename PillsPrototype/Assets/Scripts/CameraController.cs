@@ -11,12 +11,16 @@ public class CameraController : MonoBehaviour
     public ButtonAnimator sortButton;
     public ButtonAnimator hireButton;
     public Transform orientation;
+    public PillBottleManager focusBottle;
+    public PillBottleManager energyBottle;
+    public PillBottleManager calmnessBottle;
 
-    [Header("References")]
+    [Header("Variables")]
     public float sensX;
     public float sensY;
     public float xRotation;
     public float yRotation;
+    public bool isCameraDisabled;
 
     private void Start()
     {
@@ -27,34 +31,49 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        // Get mouse input
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * -sensY;
+        if (isCameraDisabled == false)
+        {
+            // Get mouse input
+            float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
+            float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * -sensY;
 
-        yRotation += mouseX;
-        xRotation += mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+            yRotation += mouseX;
+            xRotation += mouseY;
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        // Rotate camera and orientation
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
 
+            // Rotate camera and orientation
+            transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+            orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        }
 
         // Handle what the player clicks on, and what do to
         if (Input.GetMouseButtonDown(0))
         {
             Ray raycast = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
 
-            // Check if what has been clicked
+            // Check if what has been clicked, middle of the screen
 
-            if (Physics.Raycast(raycast, out RaycastHit hit, 100f))
+            if (Physics.Raycast(raycast, out RaycastHit hit, 100f) && isCameraDisabled == false)
             {
                 Debug.Log("Clicked object: " + hit.collider.name);
 
                 if (hit.collider.CompareTag("Focus Pill"))
                 {
-                    Debug.Log("Consumed focus pills.");
-                    focusSlider.timer = 20;
+                    focusBottle.isClickedOn = true;
+                    isCameraDisabled = true;
+                }
+
+                if (hit.collider.CompareTag("Energy Pill"))
+                {
+                    energyBottle.isClickedOn = true;
+                    isCameraDisabled = true;
+                }
+
+                if (hit.collider.CompareTag("Calmness Pill"))
+                {
+                    calmnessBottle.isClickedOn = true;
+                    isCameraDisabled = true;
                 }
 
                 if (hit.collider.CompareTag("Sort Complete Button"))
@@ -80,6 +99,17 @@ public class CameraController : MonoBehaviour
                         Destroy(first);
                     }
                 }
+            }
+
+            // Secondary Clicking
+
+            Ray raycast2 = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit2;
+
+            if (Physics.Raycast(raycast2, out hit2) && isCameraDisabled == true)
+            {
+                // Name of clicked object
+                Debug.Log("Hit object: " + hit2.collider.gameObject.name);
             }
         }
     }

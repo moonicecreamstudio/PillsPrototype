@@ -5,13 +5,15 @@ using TMPro;
 
 public class TaskManager : MonoBehaviour
 {
+    [Header("References")]
     public GameObject taskText;
     public Transform clipboardPanel;
 
+    [Header("Parameters")]
     public float timer;
     public float timeToSpawnText;
     public List<string> taskTexts = new List<string>();
-    public List<GameObject> tasks = new List<GameObject>();
+    public List<GameObject> tasks = new List<GameObject>(); // Stores the task order
 
     void Update()
     {
