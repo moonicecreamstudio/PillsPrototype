@@ -1,41 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
-using static UnityEngine.GraphicsBuffer;
 
-public class CameraDisrupter : MonoBehaviour
+public class PlayerDisrupter : MonoBehaviour
 {
+    [Header("References")]
     public AnimationCurve curve;
     public CameraController cameraController;
-    public bool _isTired;
-    public float _movementSpeed;
-    private Vector3 lastMousePosition;
-    private float current;
-
+    public PlayerStatusManager playerStatusManager;
     public Slider energySlider;
-    public float timer;
     public Slider focusSlider;
-
-    private float current2;
-    public float _movementSpeed2;
     public RectTransform eyelid1;
     public RectTransform eyelid2;
+    public PostProcessVolume volume;
+
+    [Header("Dozing Parameters")]
+    public float _dozingSpeed;
+    private Vector3 lastMousePosition;
+    private float current;
+    private float current2;
+    public float _eyelidSpeed;
     public Vector2 eyelid1StartPosition;
     public Vector2 eyelid1GoalPosition;
     public Vector2 eyelid2StartPosition;
     public Vector2 eyelid2GoalPosition;
 
-    public PostProcessVolume volume;
-    public float value = 15;
+    [Header("Unfocused Parameters")]
+    public float value;
     public float blur;
     DepthOfField dof;
 
     void Awake()
     {
-
         volume.profile = Instantiate(volume.profile);
         if (volume.profile.TryGetSettings(out dof) == false)
         {
@@ -44,24 +42,19 @@ public class CameraDisrupter : MonoBehaviour
     }
     void Update()
     {
-        if (energySlider.value <= 50)
-        {
-            timer += Time.deltaTime;
-            if (timer >= 5)
-            {
-                timer = 0;
-                _isTired = true;
-            }
-        }
+        // Hunger Bar Effect
 
-        if (_isTired == true)
+
+        // Energy Bar Effects
+        // When the player is tired, move the camera and shut eyelids
+        if (playerStatusManager._isTired == true)
         {
             Vector3 currentMousePosition = Input.mousePosition; // There's a bug that wakes the player up
 
-            current = Mathf.MoveTowards(current, 1, _movementSpeed * Time.deltaTime);
+            current = Mathf.MoveTowards(current, 1, _dozingSpeed * Time.deltaTime);
             cameraController.xRotation = Mathf.Lerp(cameraController.xRotation, 90, curve.Evaluate(current));
 
-            current2 = Mathf.MoveTowards(current2, 1, _movementSpeed2 * Time.deltaTime);
+            current2 = Mathf.MoveTowards(current2, 1, _eyelidSpeed * Time.deltaTime);
             Vector2 newPos1 = Vector2.Lerp(eyelid1StartPosition, eyelid1GoalPosition, curve.Evaluate(current2));
             eyelid1.anchoredPosition = newPos1;
 
@@ -73,7 +66,7 @@ public class CameraDisrupter : MonoBehaviour
             {
                 eyelid1.anchoredPosition = eyelid1StartPosition;
                 eyelid2.anchoredPosition = eyelid2StartPosition;
-                _isTired = false;
+                playerStatusManager._isTired = false;
                 current = 0f;
                 current2 = 0f;
                 Debug.Log("Wake up");
@@ -82,18 +75,21 @@ public class CameraDisrupter : MonoBehaviour
             lastMousePosition = currentMousePosition;
         }
 
-        // Currently, instantly blurs the camera. Need to fix and remove hard coded elements.
+        // Calmness Bar Effect
 
-        if (focusSlider.value <= 5)
+
+        // Focus Bar Effect
+        // Currently, instantly blurs the camera.
+        if (playerStatusManager._isUnfocused == true)
         {
-            value = 3f;
-            SetAperture(value);
+            SetAperture(3f);
         }
         else
         {
-            value = 15f;
-            SetAperture(value);
+            SetAperture(15f);
         }
+
+
     }
 
     public void SetAperture(float newAperture)

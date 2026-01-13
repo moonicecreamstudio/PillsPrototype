@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class ButtonAnimator : MonoBehaviour
 {
+    [Header("References")]
     public GameObject button;
+
+    [Header("Parameters")]
     public float offset;
     public float pressDuration;
 

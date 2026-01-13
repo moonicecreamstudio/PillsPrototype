@@ -6,22 +6,16 @@ using UnityEngine.UI;
 
 public class ScreenDisrupter : MonoBehaviour
 {
+    [Header("References")]
     public AnimationCurve curve;
     public GameObject _lettersOnScreen;
-    public float _movementSpeed;
-    private float current;
-
     public Slider focusSlider;
 
-    public bool _isOn;
+    [Header("Parameters")]
+    public float _movementSpeed;
+    private float current;
+    [HideInInspector] public bool _isOn;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (_isOn) 

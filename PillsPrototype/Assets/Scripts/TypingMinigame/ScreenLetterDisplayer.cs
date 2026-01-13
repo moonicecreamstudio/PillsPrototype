@@ -5,19 +5,21 @@ using UnityEngine;
 
 public class ScreenLetterDisplayer : MonoBehaviour
 {
-    // You need a word bank.
+    [Header("References")]
     public TextMeshPro textMeshProText = null;
-    public int emailSentCounter;
     public TextMeshPro counterDisplay;
+    public TaskManager taskManager;
 
+    [Header("Parameters")]
     private string remainingWord = string.Empty;
     private string currentWord;
     public float difficultyLevel;
+    public int emailSentCounter;
+
+    [Header("Word Banks")]
     public List<string> wordBankEasy;
     public List<string> wordBankMedium;
     public List<string> wordBankHard;
-
-    public TaskManager taskManager;
 
     void Start()
     {

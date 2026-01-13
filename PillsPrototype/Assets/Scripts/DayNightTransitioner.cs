@@ -6,15 +6,9 @@ using UnityEngine.UI;
 
 public class DayNightTransitioner : MonoBehaviour
 {
+    [Header("References")]
     public Slider dayClock;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (dayClock.value <= 0)

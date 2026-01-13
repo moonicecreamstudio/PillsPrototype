@@ -5,23 +5,22 @@ using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
-    public float sensX;
-    public float sensY;
-
+    [Header("References")]
+    public SliderManager focusSlider;
+    public TaskManager taskManager;
+    public ButtonAnimator sortButton;
+    public ButtonAnimator hireButton;
     public Transform orientation;
 
+    [Header("References")]
+    public float sensX;
+    public float sensY;
     public float xRotation;
     public float yRotation;
 
-    public ClockManager focusSlider;
-
-    public ButtonAnimator sortButton;
-    public ButtonAnimator hireButton;
-
-    public TaskManager taskManager;
-
     private void Start()
     {
+        // At the start, lock and hide the cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -40,13 +39,13 @@ public class CameraController : MonoBehaviour
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
 
+
+        // Handle what the player clicks on, and what do to
         if (Input.GetMouseButtonDown(0))
         {
-            
-
             Ray raycast = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
 
-            // Check if pills has beenn clicked
+            // Check if what has been clicked
 
             if (Physics.Raycast(raycast, out RaycastHit hit, 100f))
             {
