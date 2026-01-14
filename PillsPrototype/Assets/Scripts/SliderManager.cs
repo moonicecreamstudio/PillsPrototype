@@ -22,5 +22,10 @@ public class SliderManager : MonoBehaviour
     {
         timer = timer - Time.deltaTime;
         slider.value = timer;
+
+        if (timer >= slider.maxValue)
+        {
+            timer = slider.maxValue;
+        }
     }
 }

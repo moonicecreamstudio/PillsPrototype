@@ -19,17 +19,21 @@ public class PlayerStatusManager : MonoBehaviour
     public float tiredThreshold;
     public float timeDelayToDoze;
     public float unfocusThreshold;
+    public bool isOnePillMode;
 
     void Update()
     {
-        // When the energy slider is below the tiredThreshold, the player can get tired
-        if (energySlider.value <= tiredThreshold)
+        if (isOnePillMode == false)
         {
-            timer += Time.deltaTime;
-            if (timer >= timeDelayToDoze) // When timer exceeds timeDelayToDoze, player is tired
+            // When the energy slider is below the tiredThreshold, the player can get tired
+            if (energySlider.value <= tiredThreshold)
             {
-                timer = 0;
-                _isTired = true;
+                timer += Time.deltaTime;
+                if (timer >= timeDelayToDoze) // When timer exceeds timeDelayToDoze, player is tired
+                {
+                    timer = 0;
+                    _isTired = true;
+                }
             }
         }
 
