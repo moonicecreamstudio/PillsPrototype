@@ -27,5 +27,10 @@ public class SliderManager : MonoBehaviour
         {
             timer = slider.maxValue;
         }
+
+        if (timer <= 0)
+        {
+            timer = 0;
+        }
     }
 }
