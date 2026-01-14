@@ -10,6 +10,7 @@ public class PillChoiceManager : MonoBehaviour
     public PillBottleManager pillBottleManager;
     public CameraController cameraController;
     public TextMeshProUGUI pillText;
+    public DialogueSystemManager dialogueSystemManager;
 
     [Header("Parameters")]
     public bool isPillSelected;
@@ -40,6 +41,9 @@ public class PillChoiceManager : MonoBehaviour
         isPillSelected = false;
         pillChoice.SetActive(false);
         cameraController.isCameraDisabled = false;
+        Debug.Log(pillBottleManager.pillBottle.name.ToString());
+        dialogueSystemManager.PlayConsumeText(pillBottleManager.pillBottle.name.ToString());
+        //dialogueSystemManager.StartCoroutine(dialogueSystemManager.ConsumeText(pillBottleManager.pillBottle.name.ToString()));
     }
 
     public void NoButton()
