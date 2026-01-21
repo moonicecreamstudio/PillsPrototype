@@ -6,9 +6,7 @@ using UnityEngine.UI;
 public class PlayerStatusManager : MonoBehaviour
 {
     [Header("References")]
-    public Slider hungerSlider;
     public Slider focusSlider;
-    public Slider calmnessSlider;
     public Slider energySlider;
 
     [HideInInspector] public bool _isTired; // Player will begin dozing off when true

@@ -10,6 +10,7 @@ TagManager:
   - Clipboard
   - Calmness Pill
   - Energy Pill
+  - TypingMinigame
   layers:
   - Default
   - TransparentFX
