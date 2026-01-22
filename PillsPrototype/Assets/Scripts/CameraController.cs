@@ -14,6 +14,9 @@ public class CameraController : MonoBehaviour
     public PillBottleManager focusBottle;
     public PillBottleManager energyBottle;
     public PillBottleManager calmnessBottle;
+    public Camera cameraCamera;
+    public GameObject cameraObject;
+    public GameObject cameraHolderObject;
 
     [Header("Variables")]
     public float sensX;
@@ -47,6 +50,11 @@ public class CameraController : MonoBehaviour
             orientation.rotation = Quaternion.Euler(0, yRotation, 0);
         }
 
+        if (Input.GetKeyDown("`"))
+        {
+            isCameraDisabled = false;
+        }
+
         // Handle what the player clicks on, and what do to
         if (Input.GetMouseButtonDown(0))
         {
@@ -64,19 +72,27 @@ public class CameraController : MonoBehaviour
                     isCameraDisabled = true;
                 }
 
-                if (hit.collider.CompareTag("Energy Pill"))
+                //if (hit.collider.CompareTag("Energy Pill"))
+                //{
+                //    energyBottle.isClickedOn = true;
+                //    isCameraDisabled = true;
+                //}
+
+                //if (hit.collider.CompareTag("Calmness Pill"))
+                //{
+                //    calmnessBottle.isClickedOn = true;
+                //    isCameraDisabled = true;
+                //}
+
+                if (hit.collider.CompareTag("Typing Minigame"))
                 {
-                    energyBottle.isClickedOn = true;
+                    Debug.Log("Zoom in typing game.");
                     isCameraDisabled = true;
+                    //cameraCamera.fieldOfView = 80;
+                    cameraHolderObject.transform.localEulerAngles = new Vector3 (0, 0, 0);
                 }
 
-                if (hit.collider.CompareTag("Calmness Pill"))
-                {
-                    calmnessBottle.isClickedOn = true;
-                    isCameraDisabled = true;
-                }
-
-                if (hit.collider.CompareTag("Sort Complete Button"))
+                    if (hit.collider.CompareTag("Sort Complete Button"))
                 {
                     Debug.Log("Sort complete.");
                     sortButton.StartCoroutine(sortButton.ButtonPressed());

@@ -56,6 +56,7 @@ public class PlayerDisrupter : MonoBehaviour
         // When the player is tired, move the camera and shut eyelids
         if (playerStatusManager._isTired == true)
         {
+            cameraController.isCameraDisabled = false;
             wakeUpSliderObject.SetActive(true);
 
             // Move the camera down
