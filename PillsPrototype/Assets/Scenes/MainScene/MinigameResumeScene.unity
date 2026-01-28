@@ -4183,7 +4183,7 @@ GameObject:
   - component: {fileID: 243809386}
   - component: {fileID: 243809385}
   m_Layer: 0
-  m_Name: BlueButton
+  m_Name: Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12356,7 +12356,7 @@ GameObject:
   - component: {fileID: 764548751}
   - component: {fileID: 764548750}
   m_Layer: 0
-  m_Name: BluePaper
+  m_Name: Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14976,7 +14976,7 @@ GameObject:
   - component: {fileID: 935726504}
   - component: {fileID: 935726503}
   m_Layer: 0
-  m_Name: GreenPaper
+  m_Name: Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15478,7 +15478,7 @@ GameObject:
   - component: {fileID: 960901059}
   - component: {fileID: 960901058}
   m_Layer: 0
-  m_Name: GreenButton
+  m_Name: Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22303,7 +22303,7 @@ GameObject:
   - component: {fileID: 1391940363}
   - component: {fileID: 1391940362}
   m_Layer: 0
-  m_Name: RedButton
+  m_Name: Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27756,7 +27756,7 @@ GameObject:
   - component: {fileID: 1718898660}
   - component: {fileID: 1718898659}
   m_Layer: 0
-  m_Name: RedPaper
+  m_Name: Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30843,6 +30843,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1753034864}
+  ButtonCanvas: {fileID: 2136743948}
+  paperList: []
+  paperObjects: {fileID: 1120364718}
 --- !u!1 &1965955132
 GameObject:
   m_ObjectHideFlags: 0
