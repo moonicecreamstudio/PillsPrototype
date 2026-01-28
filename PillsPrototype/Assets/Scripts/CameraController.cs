@@ -50,9 +50,11 @@ public class CameraController : MonoBehaviour
             orientation.rotation = Quaternion.Euler(0, yRotation, 0);
         }
 
+        // Exit out of focus, return camera to original position
         if (Input.GetKeyDown("`"))
         {
             isCameraDisabled = false;
+            cameraHolderObject.transform.position = new Vector3(0, 4.98f, -1.9f);
         }
 
         // Handle what the player clicks on, and what do to
@@ -84,15 +86,36 @@ public class CameraController : MonoBehaviour
                 //    isCameraDisabled = true;
                 //}
 
+                // Instead of hard coding variables, might be better to have GameObjects, or different cameras?
+
                 if (hit.collider.CompareTag("Typing Minigame"))
                 {
                     Debug.Log("Zoom in typing game.");
                     isCameraDisabled = true;
                     //cameraCamera.fieldOfView = 80;
+                    cameraHolderObject.transform.position = new Vector3(0, 4.98f, -1.9f);
                     cameraHolderObject.transform.localEulerAngles = new Vector3 (0, 0, 0);
                 }
 
-                    if (hit.collider.CompareTag("Sort Complete Button"))
+                if (hit.collider.CompareTag("Resume Minigame"))
+                {
+                    Debug.Log("Zoom in resume game.");
+                    isCameraDisabled = true;
+                    //cameraCamera.fieldOfView = 80;
+                    cameraHolderObject.transform.position = new Vector3(1.1f, 4.98f, -1.85f);
+                    cameraHolderObject.transform.localEulerAngles = new Vector3(-15f, 30.9f, 0);
+                }
+
+                if (hit.collider.CompareTag("Sorting Minigame"))
+                {
+                    Debug.Log("Zoom in sorting game.");
+                    isCameraDisabled = true;
+                    //cameraCamera.fieldOfView = 80;
+                    cameraHolderObject.transform.position = new Vector3(0.75f, 5.9f, -3.29f);
+                    cameraHolderObject.transform.localEulerAngles = new Vector3(28, 90, 0);
+                }
+
+                if (hit.collider.CompareTag("Sort Complete Button"))
                 {
                     Debug.Log("Sort complete.");
                     sortButton.StartCoroutine(sortButton.ButtonPressed());
