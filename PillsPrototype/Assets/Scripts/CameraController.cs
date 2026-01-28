@@ -17,6 +17,10 @@ public class CameraController : MonoBehaviour
     public Camera cameraCamera;
     public GameObject cameraObject;
     public GameObject cameraHolderObject;
+    public Transform cameraOriginPosition;
+    public Transform cameraTypingPosition;
+    public Transform cameraResumePosition;
+    public Transform cameraSortingPosition;
 
     [Header("Variables")]
     public float sensX;
@@ -54,7 +58,7 @@ public class CameraController : MonoBehaviour
         if (Input.GetKeyDown("`"))
         {
             isCameraDisabled = false;
-            cameraHolderObject.transform.position = new Vector3(0, 4.98f, -1.9f);
+            cameraHolderObject.transform.position = cameraOriginPosition.position;
         }
 
         // Handle what the player clicks on, and what do to
@@ -93,8 +97,8 @@ public class CameraController : MonoBehaviour
                     Debug.Log("Zoom in typing game.");
                     isCameraDisabled = true;
                     //cameraCamera.fieldOfView = 80;
-                    cameraHolderObject.transform.position = new Vector3(0, 4.98f, -1.9f);
-                    cameraHolderObject.transform.localEulerAngles = new Vector3 (0, 0, 0);
+                    cameraHolderObject.transform.position = cameraTypingPosition.position;
+                    cameraHolderObject.transform.localEulerAngles = cameraTypingPosition.localEulerAngles;
                 }
 
                 if (hit.collider.CompareTag("Resume Minigame"))
@@ -102,8 +106,8 @@ public class CameraController : MonoBehaviour
                     Debug.Log("Zoom in resume game.");
                     isCameraDisabled = true;
                     //cameraCamera.fieldOfView = 80;
-                    cameraHolderObject.transform.position = new Vector3(1.1f, 4.98f, -1.85f);
-                    cameraHolderObject.transform.localEulerAngles = new Vector3(-15f, 30.9f, 0);
+                    cameraHolderObject.transform.position = cameraResumePosition.position;
+                    cameraHolderObject.transform.localEulerAngles = cameraResumePosition.localEulerAngles;
                 }
 
                 if (hit.collider.CompareTag("Sorting Minigame"))
@@ -111,8 +115,8 @@ public class CameraController : MonoBehaviour
                     Debug.Log("Zoom in sorting game.");
                     isCameraDisabled = true;
                     //cameraCamera.fieldOfView = 80;
-                    cameraHolderObject.transform.position = new Vector3(0.75f, 5.9f, -3.29f);
-                    cameraHolderObject.transform.localEulerAngles = new Vector3(28, 90, 0);
+                    cameraHolderObject.transform.position = cameraSortingPosition.position;
+                    cameraHolderObject.transform.localEulerAngles = cameraSortingPosition.localEulerAngles;
                 }
 
                 if (hit.collider.CompareTag("Sort Complete Button"))

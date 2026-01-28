@@ -57,6 +57,7 @@ public class PlayerDisrupter : MonoBehaviour
         if (playerStatusManager._isTired == true)
         {
             cameraController.isCameraDisabled = false;
+            cameraController.cameraHolderObject.transform.position = cameraController.cameraOriginPosition.position; // This is setting it every update, NG, find a way to set up once
             wakeUpSliderObject.SetActive(true);
 
             // Move the camera down
