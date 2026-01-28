@@ -190,6 +190,7 @@ public class ResumeCycle : MonoBehaviour
         if (ChoseCorrect == false)
         {
             Debug.Log("you lose something or other");
+            EasyResumeRequirements();
         }
         
 

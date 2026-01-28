@@ -2059,7 +2059,6 @@ GameObject:
   - component: {fileID: 143258581}
   - component: {fileID: 143258580}
   - component: {fileID: 143258579}
-  - component: {fileID: 143258578}
   m_Layer: 5
   m_Name: ResumeBackground
   m_TagString: Clipboard
@@ -2090,27 +2089,6 @@ RectTransform:
   m_AnchoredPosition: {x: 960.9284, y: -537.52313}
   m_SizeDelta: {x: 106.17, y: 124.7}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &143258578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 143258576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fa6bb31af6db964cb7693fd042e88b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  taskText: {fileID: 8603889800132185011, guid: bdf0ecfc44a4c834a97711c85ebe5aee, type: 3}
-  clipboardPanel: {fileID: 143258577}
-  timer: 0
-  timeToSpawnText: 5
-  taskTexts:
-  - Hire 1 applicant.
-  - Send 1 email.
-  - Sort 1 file.
-  tasks: []
 --- !u!114 &143258579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9651,7 +9629,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: And
+  m_text: AND
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -17556,7 +17534,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: And
+  m_text: AND
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -28729,14 +28707,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1753034863}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.12297801, y: 0.34903425, z: 0.04626113, w: 0.92785317}
+  m_LocalRotation: {x: -0.1311248, y: 0.0631095, z: 0.008364556, w: 0.9893197}
   m_LocalPosition: {x: 0, y: 4.98, z: -1.999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -15.1, y: 41.23, z: 0}
+  m_LocalEulerAnglesHint: {x: -15.1, y: 7.3, z: 0}
 --- !u!1 &1757804860
 GameObject:
   m_ObjectHideFlags: 0
