@@ -21,6 +21,7 @@ public class CameraController : MonoBehaviour
     public Transform cameraTypingPosition;
     public Transform cameraResumePosition;
     public Transform cameraSortingPosition;
+    public PlayerStatusManager playerStatusManager;
 
     [Header("Variables")]
     public float sensX;
@@ -59,6 +60,9 @@ public class CameraController : MonoBehaviour
         {
             isCameraDisabled = false;
             cameraHolderObject.transform.position = cameraOriginPosition.position;
+            playerStatusManager.isDoingTyping = false;
+            playerStatusManager.isDoingResume = false;
+            playerStatusManager.isDoingSorting = false;
         }
 
         // Handle what the player clicks on, and what do to
@@ -90,8 +94,6 @@ public class CameraController : MonoBehaviour
                 //    isCameraDisabled = true;
                 //}
 
-                // Instead of hard coding variables, might be better to have GameObjects, or different cameras?
-
                 if (hit.collider.CompareTag("Typing Minigame"))
                 {
                     Debug.Log("Zoom in typing game.");
@@ -99,6 +101,7 @@ public class CameraController : MonoBehaviour
                     //cameraCamera.fieldOfView = 80;
                     cameraHolderObject.transform.position = cameraTypingPosition.position;
                     cameraHolderObject.transform.localEulerAngles = cameraTypingPosition.localEulerAngles;
+                    playerStatusManager.isDoingTyping = true;
                 }
 
                 if (hit.collider.CompareTag("Resume Minigame"))
@@ -108,6 +111,7 @@ public class CameraController : MonoBehaviour
                     //cameraCamera.fieldOfView = 80;
                     cameraHolderObject.transform.position = cameraResumePosition.position;
                     cameraHolderObject.transform.localEulerAngles = cameraResumePosition.localEulerAngles;
+                    playerStatusManager.isDoingResume = true;
                 }
 
                 if (hit.collider.CompareTag("Sorting Minigame"))
@@ -117,6 +121,7 @@ public class CameraController : MonoBehaviour
                     //cameraCamera.fieldOfView = 80;
                     cameraHolderObject.transform.position = cameraSortingPosition.position;
                     cameraHolderObject.transform.localEulerAngles = cameraSortingPosition.localEulerAngles;
+                    playerStatusManager.isDoingSorting = true;
                 }
 
                 if (hit.collider.CompareTag("Sort Complete Button"))

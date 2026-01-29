@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class DialogueSystemManager : MonoBehaviour
 {
     [Header("References")]
     public TextMeshProUGUI subtitleText; // Used for dialogue text
     public TextMeshProUGUI subtitleText2; // Used for when items are consumed
+    public GameObject subtitleBackdrop;
 
     [Header("Parameters")]
     public float timer;
@@ -27,6 +29,7 @@ public class DialogueSystemManager : MonoBehaviour
 
     void Start()
     {
+        subtitleText.text = "";
         subtitleText2.text = "";
         StartCoroutine(IntroText());
     }
@@ -37,6 +40,7 @@ public class DialogueSystemManager : MonoBehaviour
 
     IEnumerator IntroText()
     {
+        subtitleBackdrop.SetActive(true);
         // Go through the texts for the introduction
         for (int i = 0; i < textData.Length; i++)
         {
@@ -47,6 +51,7 @@ public class DialogueSystemManager : MonoBehaviour
                 subtitleText.text = null;
             }
         }
+        subtitleBackdrop.SetActive(false);
     }
 
     public void PlayConsumeText(string pillName) // Overrides the previous text if message has not finished

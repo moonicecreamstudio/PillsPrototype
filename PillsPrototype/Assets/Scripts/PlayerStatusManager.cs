@@ -8,6 +8,8 @@ public class PlayerStatusManager : MonoBehaviour
     [Header("References")]
     public Slider focusSlider;
     public Slider energySlider;
+    public SliderManager dayTimer;
+    public SliderManager focusTimer;
 
     [HideInInspector] public bool _isTired; // Player will begin dozing off when true
     [HideInInspector] public bool _isUnfocused;
@@ -18,6 +20,12 @@ public class PlayerStatusManager : MonoBehaviour
     public float timeDelayToDoze;
     public float unfocusThreshold;
     public bool isOnePillMode;
+    public bool isDoingTyping;
+    public bool isDoingResume;
+    public bool isDoingSorting;
+
+    [Header("Player Stats")]
+    public float insomniaLevel;
 
     void Update()
     {
@@ -44,5 +52,12 @@ public class PlayerStatusManager : MonoBehaviour
         {
             _isUnfocused = false;
         }
+
+        // If the player begins any minigame, the day timer starts
+        if (isDoingTyping || isDoingResume || isDoingSorting)
+        {
+            dayTimer.isActive = true;
+            focusTimer.isActive = true;
+        } 
     }
 }

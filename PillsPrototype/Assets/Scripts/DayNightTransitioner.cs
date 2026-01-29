@@ -10,12 +10,14 @@ public class DayNightTransitioner : MonoBehaviour
     [Header("References")]
     public Slider dayClock;
 
+    [Header("Variables")]
+    public string sceneName;
 
     void Update()
     {
         if (dayClock.value <= 0)
         {
-            SceneManager.LoadScene("ShopScene");
+            SceneManager.LoadScene(sceneName);
         }
     }
 }

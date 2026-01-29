@@ -40,11 +40,11 @@ public class PlayerDisrupter : MonoBehaviour
 
     void Awake()
     {
-        volume.profile = Instantiate(volume.profile);
-        if (volume.profile.TryGetSettings(out dof) == false)
-        {
-            Debug.LogError("No volume profile");
-        }
+        //volume.profile = Instantiate(volume.profile);
+        //if (volume.profile.TryGetSettings(out dof) == false)
+        //{
+        //    Debug.LogError("No volume profile");
+        //}
         wakeUpSlider.maxValue = requiredWakeUpPoints;
         wakeUpSliderObject.SetActive(false);
     }
@@ -114,11 +114,11 @@ public class PlayerDisrupter : MonoBehaviour
         // Currently, instantly blurs the camera.
         if (playerStatusManager._isUnfocused == true)
         {
-            SetAperture(3f);
+            //SetAperture(3f);
         }
         else
         {
-            SetAperture(15f);
+            //SetAperture(15f);
         }
 
 

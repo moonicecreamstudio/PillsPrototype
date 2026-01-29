@@ -11,26 +11,31 @@ public class SliderManager : MonoBehaviour
     [Header("Parameters")]
     public float timer;
     public float secondsInLevel; // How many seconds it takes before the bar reaches 0
+    public bool isActive;
 
     void Start()
     {
         slider.maxValue = secondsInLevel;
         timer = secondsInLevel;
+        slider.value = timer;
     }
 
     void Update()
     {
-        timer = timer - Time.deltaTime;
-        slider.value = timer;
-
-        if (timer >= slider.maxValue)
+        if (isActive == true)
         {
-            timer = slider.maxValue;
-        }
+            timer = timer - Time.deltaTime;
+            slider.value = timer;
 
-        if (timer <= 0)
-        {
-            timer = 0;
+            if (timer >= slider.maxValue)
+            {
+                timer = slider.maxValue;
+            }
+
+            if (timer <= 0)
+            {
+                timer = 0;
+            }
         }
     }
 }
