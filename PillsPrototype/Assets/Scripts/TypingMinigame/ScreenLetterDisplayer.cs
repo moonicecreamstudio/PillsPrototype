@@ -8,7 +8,7 @@ public class ScreenLetterDisplayer : MonoBehaviour
     [Header("References")]
     public TextMeshPro textMeshProText = null;
     public TextMeshPro counterDisplay;
-    public TaskManager taskManager;
+    public ClipBoardScript clipBoardScript;
 
     [Header("Parameters")]
     private string remainingWord = string.Empty;
@@ -119,12 +119,7 @@ public class ScreenLetterDisplayer : MonoBehaviour
 
     private void TaskComplete()
     {
-        if (taskManager.tasks.Count > 0)
-        {
-            GameObject first = taskManager.tasks[0];
-            taskManager.tasks.RemoveAt(0);
-            Destroy(first);
-        }
+        clipBoardScript.AddEmail();
     }
 
 }
