@@ -110,8 +110,18 @@ public class ResumeCycle : MonoBehaviour
         {
             if (statusManager.isDoingResume)
             {
-                Debug.Log("weeeeeeeee");
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
             }
+
+            
+
+        }
+
+        if (Input.GetKeyDown("`"))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
         //temp controls for buttons 
