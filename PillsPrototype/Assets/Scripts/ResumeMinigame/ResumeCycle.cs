@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ResumeCycle : MonoBehaviour
@@ -12,6 +13,8 @@ public class ResumeCycle : MonoBehaviour
     string firstquality;
     string secondquality;
     string thirdquality;
+    public PlayerStatusManager statusManager;
+    public ClipBoardScript clipboard;
 
     // Start is called before the first frame update
     void Start()
@@ -103,6 +106,14 @@ public class ResumeCycle : MonoBehaviour
     void Update()
     {
         
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (statusManager.isDoingResume)
+            {
+                Debug.Log("weeeeeeeee");
+            }
+        }
+
         //temp controls for buttons 
         if (Input.GetKeyDown(KeyCode.D))
         {
@@ -189,7 +200,7 @@ public class ResumeCycle : MonoBehaviour
 
         if (ChoseCorrect == false)
         {
-            Debug.Log("you lose something or other");
+            //Debug.Log("you lose something or other");
             EasyResumeRequirements();
         }
         
@@ -200,7 +211,7 @@ public class ResumeCycle : MonoBehaviour
 
     public void PlusPoint()
     {
-        Debug.Log("you did it");
+        clipboard.AddResume();
 
         EasyResumeRequirements();
 

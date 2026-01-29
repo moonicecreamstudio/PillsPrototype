@@ -5545,8 +5545,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   focusSlider: {fileID: 448691421}
   energySlider: {fileID: 2115018358}
-  dayTimer: {fileID: 0}
-  focusTimer: {fileID: 0}
+  dayTimer: {fileID: 1527116842}
+  focusTimer: {fileID: 448691422}
   _isTired: 0
   _isUnfocused: 0
   timer: 0
@@ -30817,7 +30817,7 @@ MonoBehaviour:
   cameraTypingPosition: {fileID: 455388323}
   cameraResumePosition: {fileID: 802390041}
   cameraSortingPosition: {fileID: 347870233}
-  playerStatusManager: {fileID: 0}
+  playerStatusManager: {fileID: 298227418}
   sensX: 400
   sensY: 400
   xRotation: 0
@@ -33995,6 +33995,8 @@ MonoBehaviour:
   resumeList: []
   requirmentList: []
   currentResume: 0
+  statusManager: {fileID: 298227418}
+  clipboard: {fileID: 1757804866}
 --- !u!114 &2004158788
 MonoBehaviour:
   m_ObjectHideFlags: 0
