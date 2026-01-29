@@ -1846,7 +1846,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMeshProText: {fileID: 1674456587}
   counterDisplay: {fileID: 1061942877}
-  taskManager: {fileID: 1757804865}
+  taskManager: {fileID: 0}
   difficultyLevel: 0
   emailSentCounter: 0
   wordBankEasy:
@@ -5545,6 +5545,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   focusSlider: {fileID: 448691421}
   energySlider: {fileID: 2115018358}
+  dayTimer: {fileID: 0}
+  focusTimer: {fileID: 0}
   _isTired: 0
   _isUnfocused: 0
   timer: 0
@@ -5552,6 +5554,10 @@ MonoBehaviour:
   timeDelayToDoze: 5
   unfocusThreshold: 5
   isOnePillMode: 0
+  isDoingTyping: 0
+  isDoingResume: 0
+  isDoingSorting: 0
+  insomniaLevel: 0
 --- !u!4 &298227419
 Transform:
   m_ObjectHideFlags: 0
@@ -8693,6 +8699,7 @@ MonoBehaviour:
   slider: {fileID: 448691421}
   timer: 0
   secondsInLevel: 20
+  isActive: 0
 --- !u!1 &448932473
 GameObject:
   m_ObjectHideFlags: 0
@@ -8787,6 +8794,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 667604622}
   - {fileID: 1587828055}
   - {fileID: 636006338}
   - {fileID: 215541142}
@@ -12760,6 +12768,81 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658471417}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &667604619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 667604622}
+  - component: {fileID: 667604621}
+  - component: {fileID: 667604620}
+  m_Layer: 5
+  m_Name: Subtitle Backdrop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &667604620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667604619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5529412}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &667604621
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667604619}
+  m_CullTransparentMesh: 1
+--- !u!224 &667604622
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667604619}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 9.386253, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 448932477}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0.00012207031, y: -18.457808}
+  m_SizeDelta: {x: 100, y: 83.6182}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &671821632
 GameObject:
   m_ObjectHideFlags: 0
@@ -22089,6 +22172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   subtitleText: {fileID: 1621523888}
   subtitleText2: {fileID: 391391258}
+  subtitleBackdrop: {fileID: 667604619}
   timer: 0
   timeToNext: 0
   textData:
@@ -26626,6 +26710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayClock: {fileID: 216143565}
+  sceneName: 
 --- !u!4 &1501621833
 Transform:
   m_ObjectHideFlags: 0
@@ -26876,6 +26961,7 @@ MonoBehaviour:
   slider: {fileID: 216143565}
   timer: 100
   secondsInLevel: 100
+  isActive: 0
 --- !u!4 &1527116843
 Transform:
   m_ObjectHideFlags: 0
@@ -30717,7 +30803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   focusSlider: {fileID: 448691422}
-  taskManager: {fileID: 1757804865}
+  taskManager: {fileID: 0}
   sortButton: {fileID: 570383878}
   hireButton: {fileID: 2041113578}
   orientation: {fileID: 491356568}
@@ -30731,6 +30817,7 @@ MonoBehaviour:
   cameraTypingPosition: {fileID: 455388323}
   cameraResumePosition: {fileID: 802390041}
   cameraSortingPosition: {fileID: 347870233}
+  playerStatusManager: {fileID: 0}
   sensX: 400
   sensY: 400
   xRotation: 0
@@ -30764,7 +30851,6 @@ GameObject:
   - component: {fileID: 1757804864}
   - component: {fileID: 1757804863}
   - component: {fileID: 1757804862}
-  - component: {fileID: 1757804865}
   - component: {fileID: 1757804866}
   m_Layer: 5
   m_Name: Clipboard
@@ -30859,27 +30945,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1757804860}
   m_CullTransparentMesh: 1
---- !u!114 &1757804865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1757804860}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fa6bb31af6db964cb7693fd042e88b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  taskText: {fileID: 8603889800132185011, guid: bdf0ecfc44a4c834a97711c85ebe5aee, type: 3}
-  clipboardPanel: {fileID: 1757804861}
-  timer: 0
-  timeToSpawnText: 5
-  taskTexts:
-  - Hire 1 applicant.
-  - Send 1 email.
-  - Sort 1 file.
-  tasks: []
 --- !u!114 &1757804866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35896,6 +35961,7 @@ MonoBehaviour:
   slider: {fileID: 2115018358}
   timer: 0
   secondsInLevel: 100
+  isActive: 0
 --- !u!1 &2124079773
 GameObject:
   m_ObjectHideFlags: 0
