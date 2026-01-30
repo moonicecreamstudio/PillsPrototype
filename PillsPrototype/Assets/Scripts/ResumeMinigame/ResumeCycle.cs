@@ -15,13 +15,15 @@ public class ResumeCycle : MonoBehaviour
     string thirdquality;
     public PlayerStatusManager statusManager;
     public ClipBoardScript clipboard;
+    bool looking;
 
     // Start is called before the first frame update
     void Start()
     {
         resumeList = new GameObject[easyResumes.transform.childCount];
-            
-            
+
+
+        looking = true;
 
         for (int i = 0; i < resumeList.Length; i++)
         {
@@ -108,24 +110,27 @@ public class ResumeCycle : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0))
         {
-            if (statusManager.isDoingResume)
+            if (statusManager.isDoingResume && looking)
             {
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
+
+                looking = false;
             }
 
             
 
         }
 
-        if (Input.GetKeyDown("`"))
+        if (Input.GetKeyDown("`") && !looking)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            looking = true;
         }
 
         //temp controls for buttons 
-        if (Input.GetKeyDown(KeyCode.D))
+        /*if (Input.GetKeyDown(KeyCode.D))
         {
             nextResumeVoid();
         }
@@ -136,7 +141,7 @@ public class ResumeCycle : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             ResumeAccept();
-        }
+        }*/
 
 
 
