@@ -15,6 +15,8 @@ public class PaperSortingScript1 : MonoBehaviour
     public ClipBoardScript clipboard;
     public Canvas paperCanv;
 
+    GameObject[] buttonlist;
+
     bool looking;
 
     // Start is called before the first frame update
@@ -31,6 +33,15 @@ public class PaperSortingScript1 : MonoBehaviour
         }
 
         paperCanv.sortingOrder = 0;
+
+
+        buttonlist = new GameObject[ButtonCanvas.transform.childCount];
+
+        for (int i = 0;i < buttonlist.Length; i++)
+        {
+            buttonlist[i] = ButtonCanvas.transform.GetChild(i).gameObject;
+        }
+
     }
 
     // Update is called once per frame
@@ -105,6 +116,7 @@ public class PaperSortingScript1 : MonoBehaviour
             Debug.Log("you did it");
             clipboard.AddPaper();
             spawnNewPaper();
+            RandomizeButtonsHeight();
         }
         else
         {
@@ -121,6 +133,7 @@ public class PaperSortingScript1 : MonoBehaviour
             Debug.Log("you did it");
             clipboard.AddPaper();
             spawnNewPaper();
+            RandomizeButtonsHeight();
         }
         else
         {
@@ -138,6 +151,7 @@ public class PaperSortingScript1 : MonoBehaviour
             Debug.Log("you did it");
             clipboard.AddPaper();
             spawnNewPaper();
+            RandomizeButtonsHeight();
         }
         else
         {
@@ -145,6 +159,35 @@ public class PaperSortingScript1 : MonoBehaviour
         }
 
         
+
+
+    }
+
+    public void RandomizeButtonsLocal()
+    {
+
+
+
+
+
+    }
+
+    public void RandomizeButtonsHeight()
+    {
+        float chance = Random.Range(1,10);
+
+        if (chance < 5)
+        {
+            for (int i = 0; i < buttonlist.Length; i++)
+            {
+                float RanHeight = Random.Range(-277, -10);
+                buttonlist[i].GetComponent<RectTransform>().localPosition = new Vector3(-442, RanHeight, 0);
+            }
+        }
+
+        
+
+        //.GetComponent<RectTransform>().localPosition = new Vector3(0.07899928f, 0.282f, -0.5550001f);
 
 
     }
