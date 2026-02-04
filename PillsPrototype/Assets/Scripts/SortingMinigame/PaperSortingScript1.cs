@@ -181,7 +181,7 @@ public class PaperSortingScript1 : MonoBehaviour
             for (int i = 0; i < buttonlist.Length; i++)
             {
                 float RanHeight = Random.Range(-277, -10);
-                buttonlist[i].GetComponent<RectTransform>().localPosition = new Vector3(-442, RanHeight, 0);
+                buttonlist[i].GetComponent<RectTransform>().localPosition = new Vector3(buttonlist[i].GetComponent<RectTransform>().localPosition.x, RanHeight, 0);
             }
         }
 
