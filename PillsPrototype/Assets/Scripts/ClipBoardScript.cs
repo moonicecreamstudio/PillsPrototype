@@ -52,11 +52,7 @@ public class ClipBoardScript : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            AddPaper();
-
-        }
+        
 
         
     }
