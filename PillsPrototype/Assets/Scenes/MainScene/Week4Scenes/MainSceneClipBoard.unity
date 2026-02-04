@@ -445,7 +445,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 441, y: 101}
+  m_AnchoredPosition: {x: -531, y: 101}
   m_SizeDelta: {x: 359.26, y: 580.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &33775790
@@ -2959,7 +2959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4617,10 +4617,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0ac25d708f2ad40930e62a52b5ef5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
   ButtonCanvas: {fileID: 1581679811}
   paperList: []
   paperObjects: {fileID: 810773921}
+  statusManager: {fileID: 298227418}
+  clipboard: {fileID: 1757804866}
+  paperCanv: {fileID: 268992810}
 --- !u!114 &268992808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4637,7 +4639,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 243
 --- !u!114 &268992809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5169,7 +5171,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: 101}
+  m_AnchoredPosition: {x: -531, y: 101}
   m_SizeDelta: {x: 359.26, y: 580.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &285584548
@@ -5545,8 +5547,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   focusSlider: {fileID: 448691421}
   energySlider: {fileID: 2115018358}
-  dayTimer: {fileID: 0}
-  focusTimer: {fileID: 0}
+  dayTimer: {fileID: 1527116842}
+  focusTimer: {fileID: 448691422}
   _isTired: 0
   _isUnfocused: 0
   timer: 0
@@ -17213,7 +17215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -18107,7 +18109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -435, y: 101}
+  m_AnchoredPosition: {x: -531, y: 101}
   m_SizeDelta: {x: 359.26, y: 580.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &964961879
@@ -21523,7 +21525,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1181814307}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 268992807}
+        m_TargetAssemblyTypeName: PaperSortingScript1, Assembly-CSharp
+        m_MethodName: redButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1181814307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25177,7 +25191,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1418220554}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2004158787}
+        m_TargetAssemblyTypeName: ResumeCycle, Assembly-CSharp
+        m_MethodName: PlusPoint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1418220554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27912,7 +27938,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 212, y: -48}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1583870057
@@ -30817,7 +30843,7 @@ MonoBehaviour:
   cameraTypingPosition: {fileID: 455388323}
   cameraResumePosition: {fileID: 802390041}
   cameraSortingPosition: {fileID: 347870233}
-  playerStatusManager: {fileID: 0}
+  playerStatusManager: {fileID: 298227418}
   sensX: 400
   sensY: 400
   xRotation: 0
@@ -32097,7 +32123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -33590,7 +33616,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1976204861}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 268992807}
+        m_TargetAssemblyTypeName: PaperSortingScript1, Assembly-CSharp
+        m_MethodName: blueButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1976204861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33995,6 +34033,8 @@ MonoBehaviour:
   resumeList: []
   requirmentList: []
   currentResume: 0
+  statusManager: {fileID: 298227418}
+  clipboard: {fileID: 1757804866}
 --- !u!114 &2004158788
 MonoBehaviour:
   m_ObjectHideFlags: 0
