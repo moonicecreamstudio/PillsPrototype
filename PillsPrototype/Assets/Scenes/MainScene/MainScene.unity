@@ -3844,7 +3844,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 216143565}
   timer: 100
-  secondsInLevel: 5
+  secondsInLevel: 300
   isActive: 0
 --- !u!1 &228752603
 GameObject:
@@ -5907,10 +5907,13 @@ MonoBehaviour:
   focusTimer: {fileID: 448691422}
   _isTired: 0
   _isUnfocused: 0
+  _isZoningOut: 0
   timer: 0
+  timer2: 0
   tiredThreshold: 90
   timeDelayToDoze: 5
   unfocusThreshold: 5
+  timeDelayToZoneOut: 15
   isOnePillMode: 0
   isDoingTyping: 0
   isDoingResume: 0
@@ -35004,6 +35007,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6730814320446603013, guid: 9c8553d240c64844ab51214edf00d925, type: 3}
   m_PrefabInstance: {fileID: 1472462382}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2038820386
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 637945d0c48239246a5203f0c128d189, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.665
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 637945d0c48239246a5203f0c128d189, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.565
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 637945d0c48239246a5203f0c128d189, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.066
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 637945d0c48239246a5203f0c128d189, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 637945d0c48239246a5203f0c128d189, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 637945d0c48239246a5203f0c128d189, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 637945d0c48239246a5203f0c128d189, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 637945d0c48239246a5203f0c128d189, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 637945d0c48239246a5203f0c128d189, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 637945d0c48239246a5203f0c128d189, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 637945d0c48239246a5203f0c128d189, type: 3}
+      propertyPath: m_Name
+      value: Pill Bottle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 637945d0c48239246a5203f0c128d189, type: 3}
 --- !u!1 &2041113576
 GameObject:
   m_ObjectHideFlags: 0
@@ -37139,3 +37199,4 @@ SceneRoots:
   - {fileID: 268992806}
   - {fileID: 70504766}
   - {fileID: 892768620}
+  - {fileID: 2038820386}

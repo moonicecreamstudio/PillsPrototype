@@ -13,12 +13,15 @@ public class PlayerStatusManager : MonoBehaviour
 
     [HideInInspector] public bool _isTired; // Player will begin dozing off when true
     [HideInInspector] public bool _isUnfocused;
+    [HideInInspector] public bool _isZoningOut;
     [HideInInspector] public float timer;
+    [HideInInspector] public float timer2;
 
     [Header("Parameters")]
     public float tiredThreshold;
     public float timeDelayToDoze;
     public float unfocusThreshold;
+    public float timeDelayToZoneOut;
     public bool isOnePillMode;
     public bool isDoingTyping;
     public bool isDoingResume;
@@ -39,6 +42,7 @@ public class PlayerStatusManager : MonoBehaviour
                 {
                     timer = 0;
                     _isTired = true;
+
                 }
             }
         }
@@ -46,7 +50,14 @@ public class PlayerStatusManager : MonoBehaviour
         // When the focus slider is below the threshold, the player is unfocused
         if (focusSlider.value <= unfocusThreshold)
         {
-            _isUnfocused = true;
+
+            timer2 += Time.deltaTime;
+            if (timer2 >= Random.Range(timeDelayToZoneOut - 5, timeDelayToZoneOut + 5)) // When timer exceeds a random range of +/-5
+            {
+                timer2 = 0;
+                _isUnfocused = true;
+                Debug.Log("I'm feeling unfocused...");
+            }
         }
         else
         {

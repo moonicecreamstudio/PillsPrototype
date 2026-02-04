@@ -23,6 +23,7 @@ public class PlayerDisrupter : MonoBehaviour
     private Vector3 lastMousePosition;
     private float current;
     private float current2;
+    private float current3;
     public float _eyelidSpeed;
     public Vector2 eyelid1StartPosition;
     public Vector2 eyelid1GoalPosition;
@@ -111,10 +112,19 @@ public class PlayerDisrupter : MonoBehaviour
 
 
         // Focus Bar Effect
-        // Currently, instantly blurs the camera.
         if (playerStatusManager._isUnfocused == true)
         {
-            //SetAperture(3f);
+            cameraController.isCameraDisabled = false;
+            // Move the camera down
+            cameraController.cameraHolderObject.transform.position = cameraController.cameraOriginPosition.position; // This is setting it every update, NG, find a way to set up once
+            current3 = Mathf.MoveTowards(current3, 1, _dozingSpeed * Time.deltaTime);
+            cameraController.xRotation = Mathf.Lerp(cameraController.xRotation, -90, curve.Evaluate(current3));
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                playerStatusManager._isUnfocused = false;
+                current3 = 0f;
+            }
         }
         else
         {
