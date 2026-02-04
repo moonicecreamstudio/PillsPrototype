@@ -39,6 +39,9 @@ public class PlayerDisrupter : MonoBehaviour
     public float blur;
     DepthOfField dof;
 
+    [Header("Overdoesed Parameters")]
+    public float tremorSpeed;
+
     void Awake()
     {
         //volume.profile = Instantiate(volume.profile);
@@ -51,8 +54,6 @@ public class PlayerDisrupter : MonoBehaviour
     }
     void Update()
     {
-        // Hunger Bar Effect
-
         // Energy Bar Effects
         // When the player is tired, move the camera and shut eyelids
         if (playerStatusManager._isTired == true)
@@ -103,13 +104,7 @@ public class PlayerDisrupter : MonoBehaviour
                 wakeUpSlider.value = 0;
                 wakeUpSliderObject.SetActive(false);
             }
-
-
-
         }
-
-        // Calmness Bar Effect
-
 
         // Focus Bar Effect
         if (playerStatusManager._isUnfocused == true)
@@ -130,6 +125,8 @@ public class PlayerDisrupter : MonoBehaviour
         {
             //SetAperture(15f);
         }
+
+        // Overdose Effect
 
 
     }

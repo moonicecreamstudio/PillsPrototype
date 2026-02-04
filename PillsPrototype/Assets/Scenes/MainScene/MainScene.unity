@@ -5825,20 +5825,27 @@ MonoBehaviour:
   energySlider: {fileID: 2115018358}
   dayTimer: {fileID: 216143566}
   focusTimer: {fileID: 448691422}
-  _isTired: 0
-  _isUnfocused: 0
-  _isZoningOut: 0
-  timer: 0
-  timer2: 0
   tiredThreshold: 90
   timeDelayToDoze: 5
   unfocusThreshold: 5
   timeDelayToZoneOut: 15
+  timeDelayToTremor: 15
   isOnePillMode: 0
   isDoingTyping: 0
   isDoingResume: 0
   isDoingSorting: 0
+  pillDosageAmount: 10
+  chanceToTremors: 100
   insomniaLevel: 0
+  currentIntake: 0
+  intakeThreshold: 40
+  _isTired: 0
+  _isUnfocused: 0
+  _isTremoring: 0
+  _isZoningOut: 0
+  timer: 0
+  timer2: 0
+  timer3: 0
 --- !u!4 &298227419
 Transform:
   m_ObjectHideFlags: 0
@@ -32315,6 +32322,7 @@ MonoBehaviour:
   cameraController: {fileID: 1753034864}
   pillText: {fileID: 1266354495}
   dialogueSystemManager: {fileID: 1228970724}
+  playerStatusManager: {fileID: 298227418}
   isPillSelected: 0
 --- !u!1 &1889898665
 GameObject:

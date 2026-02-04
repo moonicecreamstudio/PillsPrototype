@@ -11,24 +11,33 @@ public class PlayerStatusManager : MonoBehaviour
     public SliderManager dayTimer;
     public SliderManager focusTimer;
 
-    [HideInInspector] public bool _isTired; // Player will begin dozing off when true
-    [HideInInspector] public bool _isUnfocused;
-    [HideInInspector] public bool _isZoningOut;
-    [HideInInspector] public float timer;
-    [HideInInspector] public float timer2;
+
 
     [Header("Parameters")]
     public float tiredThreshold;
     public float timeDelayToDoze;
     public float unfocusThreshold;
     public float timeDelayToZoneOut;
+    public float timeDelayToTremor;
     public bool isOnePillMode;
     public bool isDoingTyping;
     public bool isDoingResume;
     public bool isDoingSorting;
+    public float pillDosageAmount;
+    public float chanceToTremors;
 
     [Header("Player Stats")]
     public float insomniaLevel;
+    public float currentIntake;
+    public float intakeThreshold;
+
+    [HideInInspector] public bool _isTired; // Player will begin dozing off when true
+    [HideInInspector] public bool _isUnfocused;
+    [HideInInspector] public bool _isTremoring;
+    [HideInInspector] public bool _isZoningOut;
+    [HideInInspector] public float timer;
+    [HideInInspector] public float timer2;
+    [HideInInspector] public float timer3;
 
     void Update()
     {
@@ -42,7 +51,6 @@ public class PlayerStatusManager : MonoBehaviour
                 {
                     timer = 0;
                     _isTired = true;
-
                 }
             }
         }
@@ -62,6 +70,20 @@ public class PlayerStatusManager : MonoBehaviour
         else
         {
             _isUnfocused = false;
+        }
+
+        if (currentIntake > intakeThreshold)
+        {
+            timer3 += Time.deltaTime;
+            if (timer3 >= Random.Range(timeDelayToTremor - 5, timeDelayToTremor + 5)) // When timer exceeds a random range of +/-5
+            {
+                if (Random.Range(0, 100) <= chanceToTremors) // Chance to experience tremors out of 100
+                {
+                    _isTremoring = true;
+                    Debug.Log("I'm experiencing tremors...");
+                }
+                timer3 = 0;
+            }
         }
 
         // If the player begins any minigame, the day timer starts

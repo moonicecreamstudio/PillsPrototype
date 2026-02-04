@@ -11,6 +11,7 @@ public class PillChoiceManager : MonoBehaviour
     public CameraController cameraController;
     public TextMeshProUGUI pillText;
     public DialogueSystemManager dialogueSystemManager;
+    public PlayerStatusManager playerStatusManager;
 
     [Header("Parameters")]
     public bool isPillSelected;
@@ -43,6 +44,7 @@ public class PillChoiceManager : MonoBehaviour
         cameraController.isCameraDisabled = false;
         Debug.Log(pillBottleManager.pillBottle.name.ToString());
         dialogueSystemManager.PlayConsumeText(pillBottleManager.pillBottle.name.ToString());
+        playerStatusManager.currentIntake += playerStatusManager.pillDosageAmount;
         //dialogueSystemManager.StartCoroutine(dialogueSystemManager.ConsumeText(pillBottleManager.pillBottle.name.ToString()));
     }
 
