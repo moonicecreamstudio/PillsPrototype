@@ -10,8 +10,7 @@ public class PlayerStatusManager : MonoBehaviour
     public Slider energySlider;
     public SliderManager dayTimer;
     public SliderManager focusTimer;
-
-
+    public DialogueSystemManager dialogueSystemManager;
 
     [Header("Parameters")]
     public float tiredThreshold;
@@ -25,6 +24,10 @@ public class PlayerStatusManager : MonoBehaviour
     public bool isDoingSorting;
     public float pillDosageAmount;
     public float chanceToTremors;
+
+    [Header("Checks")]
+    public float previousFocusValue; 
+    public float previousIntakeValue;
 
     [Header("Player Stats")]
     public float insomniaLevel;
@@ -41,6 +44,8 @@ public class PlayerStatusManager : MonoBehaviour
 
     void Update()
     {
+        
+
         if (isOnePillMode == false)
         {
             // When the energy slider is below the tiredThreshold, the player can get tired
@@ -55,16 +60,30 @@ public class PlayerStatusManager : MonoBehaviour
             }
         }
 
+        // Runs code once the bar depletes past below a threshold
+        if (previousFocusValue >= focusSlider.maxValue / 2 && focusSlider.value <= focusSlider.maxValue / 2)
+        {
+            float randomBark = Random.Range(0, 2);
+            if (randomBark == 0) dialogueSystemManager.PlayConsumeText("focusbarmedium_01");
+            if (randomBark == 1) dialogueSystemManager.PlayConsumeText("focusbarmedium_02");
+        }
+
+        if (previousFocusValue >= unfocusThreshold && focusSlider.value <= unfocusThreshold)
+        {
+            float randomBark = Random.Range(0, 2);
+            if (randomBark == 0) dialogueSystemManager.PlayConsumeText("focusbarlow_01");
+            if (randomBark == 1) dialogueSystemManager.PlayConsumeText("focusbarlow_02");
+        }
+
         // When the focus slider is below the threshold, the player is unfocused
         if (focusSlider.value <= unfocusThreshold)
         {
-
             timer2 += Time.deltaTime;
             if (timer2 >= Random.Range(timeDelayToZoneOut - 5, timeDelayToZoneOut + 5)) // When timer exceeds a random range of +/-5
             {
                 timer2 = 0;
                 _isUnfocused = true;
-                Debug.Log("I'm feeling unfocused...");
+                Debug.Log("Player's focus is below the unfocus threshold.");
             }
         }
         else
@@ -72,6 +91,13 @@ public class PlayerStatusManager : MonoBehaviour
             _isUnfocused = false;
         }
 
+        // Tremor bark
+        if (previousIntakeValue <= intakeThreshold && currentIntake > intakeThreshold)
+        {
+            dialogueSystemManager.PlayConsumeText("overdose_01");
+        }
+
+        // Begin chance for tremors
         if (currentIntake > intakeThreshold && _isTremoring == false)
         {
             timer3 += Time.deltaTime;
@@ -80,7 +106,7 @@ public class PlayerStatusManager : MonoBehaviour
                 if (Random.Range(0, 100) <= chanceToTremors) // Chance to experience tremors out of 100
                 {
                     _isTremoring = true;
-                    Debug.Log("I'm experiencing tremors...");
+                    Debug.Log("Player is experincing tremors.");
                 }
                 timer3 = 0;
                 Debug.Log(timer3);
@@ -92,6 +118,10 @@ public class PlayerStatusManager : MonoBehaviour
         {
             dayTimer.isActive = true;
             focusTimer.isActive = true;
-        } 
+        }
+
+        // Allows to run code once for barks
+        previousFocusValue = focusSlider.value;
+        previousIntakeValue = currentIntake;
     }
 }

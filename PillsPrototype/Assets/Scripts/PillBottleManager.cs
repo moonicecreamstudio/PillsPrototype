@@ -19,6 +19,7 @@ public class PillBottleManager : MonoBehaviour
     public float speed;
     public bool isPillConsumed;
     public bool isPillCancelled;
+    public float replenishAmount;
 
     void Update()
     {
@@ -47,8 +48,8 @@ public class PillBottleManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
-            Debug.Log("Consumed pills.");
-            sliderStat.timer += 20;
+            Debug.Log("Player has consumed pills.");
+            sliderStat.timer += replenishAmount;
 
             transform.position = originPosition.position; // Return the pill to the original position
 

@@ -5825,6 +5825,7 @@ MonoBehaviour:
   energySlider: {fileID: 2115018358}
   dayTimer: {fileID: 216143566}
   focusTimer: {fileID: 448691422}
+  dialogueSystemManager: {fileID: 1228970724}
   tiredThreshold: 90
   timeDelayToDoze: 5
   unfocusThreshold: 5
@@ -5836,6 +5837,8 @@ MonoBehaviour:
   isDoingSorting: 0
   pillDosageAmount: 10
   chanceToTremors: 100
+  previousFocusValue: 0
+  previousIntakeValue: 0
   insomniaLevel: 0
   currentIntake: 0
   intakeThreshold: 40
@@ -21862,15 +21865,41 @@ MonoBehaviour:
     displayTime: 8
     textContents: Hope you can keep up! You don't want to end up like the last person
       who sat there before you did...
-  - textID: Consume Energy Pill
+  - textID: Consume Focus Pills
     displayTime: 4
-    textContents: I feel a little more energetic.
-  - textID: Consume Calmness Pill
+    textContents: Ah, I suppose I'll feel a little better now.. Back to work it is.
+  - textID: focusbarlow_01
     displayTime: 4
-    textContents: I feel a little more calm now.
-  - textID: Consume Focus Pill
+    textContents: "I feel like I can't sit at this desk a second longer!\r\n\r"
+  - textID: focusbarlow_02
     displayTime: 4
-    textContents: I feel a little more focused now.
+    textContents: "I just can't pay attention to this\u2026 When can I go home?"
+  - textID: focusbarmedium_01
+    displayTime: 4
+    textContents: "I wonder if the company Wi-fi would block TouYube on this computer\u2026\r"
+  - textID: focusbarmedium_02
+    displayTime: 4
+    textContents: "I wish I could just focus a little bit more.\r"
+  - textID: focusbarhigh_01
+    displayTime: 4
+    textContents: "No distractions could slow me down today!\r \r"
+  - textID: focusbarhigh_02
+    displayTime: 4
+    textContents: "I've never felt so focused before.\r\r \r"
+  - textID: overdose_01
+    displayTime: 4
+    textContents: "One more can't hurt...\r\r\r \r"
+  - textID: replenishfocus_01
+    displayTime: 4
+    textContents: "Ah, I suppose I'll feel a little better now.. Back to work it
+      is.\r\r\r \r"
+  - textID: replenishfocus_02
+    displayTime: 4
+    textContents: "Maybe now I can get back on track.\r\r\r \r"
+  - textID: replenishfocus_03
+    displayTime: 4
+    textContents: "I feel pretty good. I should get lots of work done now, right?
+      Ha ha..\r\r\r \r"
 --- !u!1 &1233283477
 GameObject:
   m_ObjectHideFlags: 0
@@ -29412,6 +29441,7 @@ MonoBehaviour:
   speed: 7
   isPillConsumed: 0
   isPillCancelled: 0
+  replenishAmount: 60
 --- !u!1001 &1706900631
 PrefabInstance:
   m_ObjectHideFlags: 0

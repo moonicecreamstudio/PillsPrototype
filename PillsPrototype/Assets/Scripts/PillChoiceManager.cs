@@ -43,9 +43,15 @@ public class PillChoiceManager : MonoBehaviour
         pillChoice.SetActive(false);
         cameraController.isCameraDisabled = false;
         Debug.Log(pillBottleManager.pillBottle.name.ToString());
-        dialogueSystemManager.PlayConsumeText(pillBottleManager.pillBottle.name.ToString());
+        //dialogueSystemManager.PlayConsumeText(pillBottleManager.pillBottle.name.ToString()); // Used for multiple pills
         playerStatusManager.currentIntake += playerStatusManager.pillDosageAmount;
         //dialogueSystemManager.StartCoroutine(dialogueSystemManager.ConsumeText(pillBottleManager.pillBottle.name.ToString()));
+
+        // Barks
+        float randomBark = Random.Range(0, 3);
+        if (randomBark == 0) dialogueSystemManager.PlayConsumeText("replenishfocus_01");
+        if (randomBark == 1) dialogueSystemManager.PlayConsumeText("replenishfocus_02");
+        if (randomBark == 2) dialogueSystemManager.PlayConsumeText("replenishfocus_03");
     }
 
     public void NoButton()
