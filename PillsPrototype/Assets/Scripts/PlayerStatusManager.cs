@@ -72,7 +72,7 @@ public class PlayerStatusManager : MonoBehaviour
             _isUnfocused = false;
         }
 
-        if (currentIntake > intakeThreshold)
+        if (currentIntake > intakeThreshold && _isTremoring == false)
         {
             timer3 += Time.deltaTime;
             if (timer3 >= Random.Range(timeDelayToTremor - 5, timeDelayToTremor + 5)) // When timer exceeds a random range of +/-5
@@ -83,6 +83,7 @@ public class PlayerStatusManager : MonoBehaviour
                     Debug.Log("I'm experiencing tremors...");
                 }
                 timer3 = 0;
+                Debug.Log(timer3);
             }
         }
 

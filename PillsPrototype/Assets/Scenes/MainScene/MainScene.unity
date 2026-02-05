@@ -36705,6 +36705,7 @@ MonoBehaviour:
   volume: {fileID: 583176551}
   wakeUpSlider: {fileID: 1388989445}
   wakeUpSliderObject: {fileID: 1388989443}
+  mainCamera: {fileID: 963194225}
   _dozingSpeed: 0.05
   _eyelidSpeed: 0.6
   eyelid1StartPosition: {x: 0, y: 410}
@@ -36717,6 +36718,7 @@ MonoBehaviour:
   lastVelocity: {x: 0, y: 0}
   value: 15
   blur: 5
+  tremorSpeed: 0
 --- !u!4 &2131671963
 Transform:
   m_ObjectHideFlags: 0

@@ -17,6 +17,7 @@ public class PlayerDisrupter : MonoBehaviour
     public PostProcessVolume volume;
     public Slider wakeUpSlider;
     public GameObject wakeUpSliderObject;
+    public GameObject mainCamera;
 
     [Header("Dozing Parameters")]
     public float _dozingSpeed;
@@ -127,8 +128,27 @@ public class PlayerDisrupter : MonoBehaviour
         }
 
         // Overdose Effect
+        if (playerStatusManager._isTremoring == true)
+        {
+            StartCoroutine(Tremors());
+        }
 
+    }
 
+    IEnumerator Tremors()
+    {
+        // Shake the camera for a set duration
+        for (int i = 0; i < 5; i++)
+        {
+            mainCamera.transform.localPosition = new Vector3(-0.1f, 0, 0);
+            yield return new WaitForSeconds(0.5f);
+            mainCamera.transform.localPosition = new Vector3(0.1f, 0, 0);
+            yield return new WaitForSeconds(0.5f);
+        }
+        // Stop shaking
+        mainCamera.transform.localPosition = new Vector3(0, 0, 0);
+        playerStatusManager._isTremoring = false;
+        yield break;
     }
 
     public void SetAperture(float newAperture)
