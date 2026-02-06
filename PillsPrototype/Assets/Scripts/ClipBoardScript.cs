@@ -6,9 +6,9 @@ using TMPro;
 
 public class ClipBoardScript : MonoBehaviour
 {
-    float EmailNum;
-    float ResumeNum;
-    float PaperNum;
+    public float EmailNum;
+    public float ResumeNum;
+    public float PaperNum;
     public float EmailReq;
     public float ResumeReq;
     public float PaperReq;

@@ -13,6 +13,7 @@ TagManager:
   - Sorting Minigame
   - Typing Minigame
   - Resume Minigame
+  - Clock
   layers:
   - Default
   - TransparentFX

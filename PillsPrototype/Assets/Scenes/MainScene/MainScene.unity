@@ -1612,7 +1612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayDisplayer: {fileID: 303189537}
-  maxDay: 2
+  maxDay: 3
   sceneTransitioner: {fileID: 34038344}
 --- !u!4 &80366631
 Transform:
@@ -4006,7 +4006,7 @@ GameObject:
   - component: {fileID: 216143566}
   m_Layer: 5
   m_Name: ClockFace
-  m_TagString: Untagged
+  m_TagString: Clock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16367,6 +16367,62 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 861988396}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &876046757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 876046759}
+  - component: {fileID: 876046758}
+  m_Layer: 0
+  m_Name: ScoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &876046758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876046757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b292b4b45e3af4949a99cbf5a904d7e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipBoardScript: {fileID: 1470090618}
+  gameSettingsManager: {fileID: 80366630}
+  clockSlider: {fileID: 216143565}
+  percentageEmail: 0
+  percentageResume: 0
+  percentagePaper: 0
+  sumScore: 0
+  goodScore: 90
+  poorScore: 50
+  isScoreCalculated: 0
+  isDayOver: 0
+  overallScore: []
+--- !u!4 &876046759
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876046757}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &878746942
 GameObject:
   m_ObjectHideFlags: 0
@@ -25879,6 +25935,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8400abaf47f6d9b489861549f0758fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EmailNum: 0
+  ResumeNum: 0
+  PaperNum: 0
   EmailReq: 30
   ResumeReq: 8
   PaperReq: 35
@@ -37246,6 +37305,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1668904020}
   - {fileID: 1408462711}
+  - {fileID: 876046759}
   - {fileID: 34038345}
   - {fileID: 80366631}
   - {fileID: 583176550}

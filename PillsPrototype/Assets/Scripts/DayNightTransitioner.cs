@@ -17,7 +17,14 @@ public class DayNightTransitioner : MonoBehaviour
     {
         if (dayClock.value <= 0)
         {
-            SceneManager.LoadScene(sceneName);
+            StartCoroutine(NextDay());
         }
+    }
+
+    IEnumerator NextDay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene(sceneName);
+        yield break;
     }
 }
