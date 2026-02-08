@@ -131,6 +131,7 @@ public class PlayerDisrupter : MonoBehaviour
                 playerStatusManager._isUnfocused = false;
                 current3 = 0f;
                 vignette.intensity.value = 0.25f;
+                vignetteValue = 0f;
             }
         }
 

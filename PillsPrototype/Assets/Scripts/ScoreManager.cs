@@ -86,8 +86,6 @@ public class ScoreManager : MonoBehaviour
                 }
         }
 
-
-
         previousTimerValue = clockSlider.value;
     }
 

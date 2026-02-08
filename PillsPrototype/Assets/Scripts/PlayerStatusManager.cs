@@ -9,7 +9,8 @@ public class PlayerStatusManager : MonoBehaviour
     public Slider focusSlider;
     public Slider energySlider;
     public SliderManager dayTimer;
-    public SliderManager focusTimer;
+    public SliderManager focusBar;
+    public SliderManager energyBar;
     public DialogueSystemManager dialogueSystemManager;
 
     [Header("Parameters")]
@@ -115,7 +116,8 @@ public class PlayerStatusManager : MonoBehaviour
         if (isDoingTyping || isDoingResume || isDoingSorting)
         {
             dayTimer.isActive = true;
-            focusTimer.isActive = true;
+            focusBar.isActive = true;
+            energyBar.isActive = true;
         }
 
         // Allows to run code once for barks

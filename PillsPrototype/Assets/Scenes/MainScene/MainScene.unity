@@ -1486,7 +1486,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &75792495
 Transform:
   m_ObjectHideFlags: 0
@@ -6276,19 +6276,20 @@ MonoBehaviour:
   focusSlider: {fileID: 448691421}
   energySlider: {fileID: 2115018358}
   dayTimer: {fileID: 216143566}
-  focusTimer: {fileID: 448691422}
+  focusBar: {fileID: 448691422}
+  energyBar: {fileID: 2115018359}
   dialogueSystemManager: {fileID: 1228970724}
-  tiredThreshold: 90
-  timeDelayToDoze: 5
+  tiredThreshold: 60
+  timeDelayToDoze: 30
   unfocusThreshold: 5
-  timeDelayToZoneOut: 15
+  timeDelayToZoneOut: 35
   timeDelayToTremor: 15
   isOnePillMode: 0
   isDoingTyping: 0
   isDoingResume: 0
   isDoingSorting: 0
   pillDosageAmount: 10
-  chanceToTremors: 100
+  chanceToTremors: 75
   previousFocusValue: 0
   previousIntakeValue: 0
   insomniaLevel: 0
@@ -8655,7 +8656,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &432756445
 Transform:
   m_ObjectHideFlags: 0
@@ -24484,7 +24485,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1222988341
 Transform:
   m_ObjectHideFlags: 0
@@ -38633,7 +38634,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 637945d0c48239246a5203f0c128d189, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.665
+      value: -1.779
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 637945d0c48239246a5203f0c128d189, type: 3}
       propertyPath: m_LocalPosition.y
@@ -38641,7 +38642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 637945d0c48239246a5203f0c128d189, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.066
+      value: 0.213
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 637945d0c48239246a5203f0c128d189, type: 3}
       propertyPath: m_LocalRotation.w
@@ -40123,6 +40124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2115018357}
   - component: {fileID: 2115018358}
+  - component: {fileID: 2115018359}
   m_Layer: 5
   m_Name: Energy Slider
   m_TagString: Untagged
@@ -40202,6 +40204,22 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2115018359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115018356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 173475451663c0443b0efac06540ebab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 2115018358}
+  timer: 0
+  secondsInLevel: 240
+  isActive: 0
 --- !u!1 &2117935362
 GameObject:
   m_ObjectHideFlags: 0
@@ -40891,6 +40909,7 @@ MonoBehaviour:
   accelerationThreshold: 1
   lastVelocity: {x: 0, y: 0}
   vignette: {fileID: 0}
+  vignetteValue: 0
   tremorSpeed: 0
 --- !u!4 &2131671963
 Transform:
