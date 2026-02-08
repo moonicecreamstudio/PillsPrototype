@@ -44,8 +44,6 @@ public class PlayerStatusManager : MonoBehaviour
 
     void Update()
     {
-        
-
         if (isOnePillMode == false)
         {
             // When the energy slider is below the tiredThreshold, the player can get tired

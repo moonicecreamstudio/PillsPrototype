@@ -23,7 +23,7 @@ public class DayNightTransitioner : MonoBehaviour
 
     IEnumerator NextDay()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(30f);
         SceneManager.LoadScene(sceneName);
         yield break;
     }
