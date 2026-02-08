@@ -109,6 +109,11 @@ public class ScoreManager : MonoBehaviour
         percentageResume = clipBoardScript.ResumeNum / clipBoardScript.ResumeReq;
         percentagePaper = clipBoardScript.PaperNum / clipBoardScript.PaperReq;
 
+        // Do not let it go over 1
+        if (percentageEmail > 1) percentageEmail = 1;
+        if (percentageResume > 1) percentageResume = 1;
+        if (percentagePaper > 1) percentagePaper = 1;
+
         sumScore = percentageEmail + percentageResume + percentagePaper;
         overallScore.Add(new OverallScore {day = GameSettingsManager.currentDay, score = sumScore});
 

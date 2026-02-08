@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Rendering;
 
 public class PlayerDisrupter : MonoBehaviour
 {
@@ -10,14 +11,16 @@ public class PlayerDisrupter : MonoBehaviour
     public AnimationCurve curve;
     public CameraController cameraController;
     public PlayerStatusManager playerStatusManager;
+    public PillChoiceManager pillChoiceManager;
     public Slider energySlider;
     public Slider focusSlider;
     public RectTransform eyelid1;
     public RectTransform eyelid2;
-    public PostProcessVolume volume;
     public Slider wakeUpSlider;
     public GameObject wakeUpSliderObject;
     public GameObject mainCamera;
+    public ScoreManager scoreManager;
+    public PostProcessVolume volume;
 
     [Header("Dozing Parameters")]
     public float _dozingSpeed;
@@ -34,30 +37,30 @@ public class PlayerDisrupter : MonoBehaviour
     public float requiredWakeUpPoints;
     public float accelerationThreshold;
     public Vector2 lastVelocity;
+    public Vignette vignette;
+    public float vignetteValue;
 
     [Header("Unfocused Parameters")]
-    public float value;
-    public float blur;
-    DepthOfField dof;
+
 
     [Header("Overdoesed Parameters")]
     public float tremorSpeed;
 
     void Awake()
     {
-        //volume.profile = Instantiate(volume.profile);
-        //if (volume.profile.TryGetSettings(out dof) == false)
-        //{
-        //    Debug.LogError("No volume profile");
-        //}
         wakeUpSlider.maxValue = requiredWakeUpPoints;
         wakeUpSliderObject.SetActive(false);
+    }
+
+    void Start()
+    {
+        volume.profile.TryGetSettings(out vignette);
     }
     void Update()
     {
         // Energy Bar Effects
         // When the player is tired, move the camera and shut eyelids
-        if (playerStatusManager._isTired == true)
+        if (playerStatusManager._isTired == true && scoreManager.isDayOver == false)
         {
             cameraController.isCameraDisabled = false;
             cameraController.cameraHolderObject.transform.position = cameraController.cameraOriginPosition.position; // This is setting it every update, NG, find a way to set up once
@@ -108,27 +111,31 @@ public class PlayerDisrupter : MonoBehaviour
         }
 
         // Focus Bar Effect
-        if (playerStatusManager._isUnfocused == true)
+        if (playerStatusManager._isUnfocused == true && scoreManager.isDayOver == false)
         {
             cameraController.isCameraDisabled = false;
             // Move the camera down
             cameraController.cameraHolderObject.transform.position = cameraController.cameraOriginPosition.position; // This is setting it every update, NG, find a way to set up once
             current3 = Mathf.MoveTowards(current3, 1, _dozingSpeed * Time.deltaTime);
             cameraController.xRotation = Mathf.Lerp(cameraController.xRotation, -90, curve.Evaluate(current3));
+            if (pillChoiceManager.isActiveAndEnabled) pillChoiceManager.NoButton();
+            cameraController.isCameraDisabled = false;
+            playerStatusManager.isDoingTyping = false;
+            playerStatusManager.isDoingResume = false;
+            playerStatusManager.isDoingSorting = false;
+            vignetteValue += (Time.deltaTime * 0.3f);
+            vignette.intensity.value = vignetteValue;
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 playerStatusManager._isUnfocused = false;
                 current3 = 0f;
+                vignette.intensity.value = 0.25f;
             }
-        }
-        else
-        {
-            //SetAperture(15f);
         }
 
         // Overdose Effect
-        if (playerStatusManager._isTremoring == true)
+        if (playerStatusManager._isTremoring == true && scoreManager.isDayOver == false)
         {
             StartCoroutine(Tremors());
         }
@@ -150,14 +157,4 @@ public class PlayerDisrupter : MonoBehaviour
         playerStatusManager._isTremoring = false;
         yield break;
     }
-
-    public void SetAperture(float newAperture)
-    {
-        if (dof != null)
-        {
-            dof.aperture.value = newAperture;
-            dof.aperture.overrideState = true;
-        }
-    }
-
 }
