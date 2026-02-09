@@ -6282,7 +6282,7 @@ MonoBehaviour:
   tiredThreshold: 60
   timeDelayToDoze: 30
   unfocusThreshold: 5
-  timeDelayToZoneOut: 35
+  timeDelayToZoneOut: 20
   timeDelayToTremor: 15
   isOnePillMode: 0
   isDoingTyping: 0
