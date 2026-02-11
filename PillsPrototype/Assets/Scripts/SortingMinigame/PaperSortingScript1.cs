@@ -22,7 +22,7 @@ public class PaperSortingScript1 : MonoBehaviour
 
     AudioSource audiosource;
 
-    //Image currentPaperImage; 
+    Image currentPaperImage; 
 
     // Start is called before the first frame update
     void Start()
@@ -197,17 +197,44 @@ public class PaperSortingScript1 : MonoBehaviour
 
     }
 
+    IEnumerator SwitchPages()
+    {
+        float transitionSeconds = 0.5f;
+        yield return FadeCurrentPage(transitionSeconds, 0);
+
+        // TODO: code to randomize which page is current
+
+
+        // Ensure new page starts at 0 alpha so we don't see a visible pop.
+        var color = currentPaperImage.color;
+        color.a = 0;
+        currentPaperImage.color = color;
+        yield return FadeCurrentPage(transitionSeconds, 1, 0);
+    }
+
+    IEnumerator FadeCurrentPage(float durationSeconds, float targetAlpha, float startAlpha = -1) {
+        Color oldColor = currentPaperImage.color;
+        if (startAlpha >= 0) oldColor.a = startAlpha;
+
+        Color newColor = currentPaperImage.color;
+        newColor.a = targetAlpha;
+        float speed = 1f / durationSeconds;
+        
+        for (float t = 0; t < 1; t += speed * Time.deltaTime)
+        {          
+            currentPaperImage.color = Color.Lerp(oldColor, newColor, t);
+            yield return null;
+        }
+
+        currentPaperImage.color = newColor;
+    }
+
+
     public void RandomizeButtonsHeight()
     {
         audiosource.Play();
 
-        /*while (currentPaperImage.color.a > 1)
-        {
-            Color OldColor = currentPaperImage.color;
-            //currentPaperImage.color -= new Color (currentPaperImage.color.r, ;
-            currentPaperImage.color.Lerp((OldColor), (new Color(1,1,1), 1));
-
-        }*/
+        StartCoroutine(FadeCurrentPage(0.5f, 0));
         
 
         float chance = Random.Range(1,10);
