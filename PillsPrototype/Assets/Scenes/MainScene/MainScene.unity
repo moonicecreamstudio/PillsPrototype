@@ -4221,6 +4221,7 @@ Transform:
   - {fileID: 397431177}
   - {fileID: 832371341}
   - {fileID: 1388062185}
+  - {fileID: 2023452847}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &242041492
@@ -33750,14 +33751,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1705058235}
-  - component: {fileID: 1705058236}
   m_Layer: 0
   m_Name: Focus Pill
   m_TagString: Focus Pill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1705058235
 Transform:
   m_ObjectHideFlags: 0
@@ -33767,7 +33767,7 @@ Transform:
   m_GameObject: {fileID: 1705058234}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.8879998, y: 3.715, z: -0.157}
+  m_LocalPosition: {x: -2.792, y: 3.715, z: -0.157}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -33776,29 +33776,6 @@ Transform:
   - {fileID: 160793201}
   m_Father: {fileID: 241548640}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1705058236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1705058234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25837fb935d907048880e15b9fbe7d58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pillBottle: {fileID: 1705058234}
-  sliderStat: {fileID: 448691422}
-  cameraPosition: {fileID: 963194228}
-  pillChoiceManager: {fileID: 1886195174}
-  originPosition: {fileID: 326135015}
-  cameraRadius: 1
-  isClickedOn: 0
-  speed: 7
-  isPillConsumed: 0
-  isPillCancelled: 0
-  replenishAmount: 60
 --- !u!1001 &1706900631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34762,7 +34739,7 @@ MonoBehaviour:
   sortButton: {fileID: 570383878}
   hireButton: {fileID: 2041113578}
   orientation: {fileID: 491356568}
-  focusBottle: {fileID: 1705058236}
+  focusBottle: {fileID: 2023452848}
   energyBottle: {fileID: 0}
   calmnessBottle: {fileID: 0}
   cameraCamera: {fileID: 963194227}
@@ -38533,6 +38510,62 @@ Transform:
   - {fileID: 1671785257}
   m_Father: {fileID: 241548640}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2023452846 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 637945d0c48239246a5203f0c128d189, type: 3}
+  m_PrefabInstance: {fileID: 2038820386}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2023452847 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 637945d0c48239246a5203f0c128d189, type: 3}
+  m_PrefabInstance: {fileID: 2038820386}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2023452848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023452846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25837fb935d907048880e15b9fbe7d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pillBottle: {fileID: 1705058234}
+  sliderStat: {fileID: 448691422}
+  cameraPosition: {fileID: 963194228}
+  pillChoiceManager: {fileID: 1886195174}
+  originPosition: {fileID: 326135015}
+  cameraRadius: 1
+  isClickedOn: 0
+  speed: 7
+  isPillConsumed: 0
+  isPillCancelled: 0
+  replenishAmount: 60
+--- !u!136 &2023452851
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023452846}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.113842696
+  m_Height: 0.33560818
+  m_Direction: 1
+  m_Center: {x: 0.000000011175871, y: 0.0043551177, z: -0.000000018626451}
 --- !u!1 &2025881398
 GameObject:
   m_ObjectHideFlags: 0
@@ -39051,31 +39084,31 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 241548640}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 637945d0c48239246a5203f0c128d189, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.779
+      value: -1.8879998
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 637945d0c48239246a5203f0c128d189, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.565
+      value: 3.715
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 637945d0c48239246a5203f0c128d189, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.213
+      value: -0.157
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 637945d0c48239246a5203f0c128d189, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.13052373
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 637945d0c48239246a5203f0c128d189, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 637945d0c48239246a5203f0c128d189, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.9914452
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 637945d0c48239246a5203f0c128d189, type: 3}
       propertyPath: m_LocalRotation.z
@@ -39087,7 +39120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 637945d0c48239246a5203f0c128d189, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -195
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 637945d0c48239246a5203f0c128d189, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -39101,10 +39134,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pill Bottle
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 637945d0c48239246a5203f0c128d189, type: 3}
+      propertyPath: m_TagString
+      value: Focus Pill
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 637945d0c48239246a5203f0c128d189, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2023452848}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 637945d0c48239246a5203f0c128d189, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2023452851}
   m_SourcePrefab: {fileID: 100100000, guid: 637945d0c48239246a5203f0c128d189, type: 3}
 --- !u!1 &2041113576
 GameObject:
@@ -41931,4 +41974,3 @@ SceneRoots:
   - {fileID: 1052281016}
   - {fileID: 70504766}
   - {fileID: 616120194}
-  - {fileID: 2038820386}
