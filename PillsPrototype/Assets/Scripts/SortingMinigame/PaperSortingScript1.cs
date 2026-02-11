@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PaperSortingScript1 : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class PaperSortingScript1 : MonoBehaviour
     GameObject[] buttonlist;
 
     bool looking;
+
+    AudioSource audiosource;
+
+    //Image currentPaperImage; 
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +47,11 @@ public class PaperSortingScript1 : MonoBehaviour
             buttonlist[i] = ButtonCanvas.transform.GetChild(i).gameObject;
         }
 
+        audiosource = GetComponent<AudioSource>();
+
     }
+
+    
 
     // Update is called once per frame
     void Update()
@@ -60,18 +69,10 @@ public class PaperSortingScript1 : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (statusManager.isDoingSorting && looking)
-            {
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-                ButtonCanvas.SetActive(true);
-                spawnNewPaper();
-                
-                looking = false;
-                paperCanv.sortingOrder = 2;
-            }
+            StartCoroutine(WaitAndActivateGame());
 
-            
+
+
 
 
         }
@@ -93,6 +94,21 @@ public class PaperSortingScript1 : MonoBehaviour
 
     }
 
+    public IEnumerator WaitAndActivateGame()
+    {
+        yield return new WaitForEndOfFrame();
+        if (statusManager.isDoingSorting && looking)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            ButtonCanvas.SetActive(true);
+            spawnNewPaper();
+
+            looking = false;
+            paperCanv.sortingOrder = 2;
+        }
+    }
+
 
     public void spawnNewPaper()
     {
@@ -102,9 +118,15 @@ public class PaperSortingScript1 : MonoBehaviour
         }
 
         currentpaper = Random.Range(0, paperList.Length);
+
+        float ranPaperZ = Random.Range(2.4f, 3f);
+        float ranPaperX = Random.Range(1.802f, 2.04f);
+
+        paperList[currentpaper].GetComponent<RectTransform>().localPosition = new Vector3(ranPaperX, paperList[currentpaper].GetComponent<RectTransform>().localPosition.y, ranPaperZ);
+
         paperList[currentpaper].SetActive(true);
 
-
+        //currentPaperImage = paperList[currentpaper].gameObject.GetComponent<Image>();
 
 
     }
@@ -174,14 +196,25 @@ public class PaperSortingScript1 : MonoBehaviour
 
     public void RandomizeButtonsHeight()
     {
+        audiosource.Play();
+
+        /*while (currentPaperImage.color.a > 1)
+        {
+            Color OldColor = currentPaperImage.color;
+            //currentPaperImage.color -= new Color (currentPaperImage.color.r, ;
+            currentPaperImage.color.Lerp((OldColor), (new Color(1,1,1), 1));
+
+        }*/
+        
+
         float chance = Random.Range(1,10);
 
         if (chance < 5)
         {
             for (int i = 0; i < buttonlist.Length; i++)
             {
-                float RanHeight = Random.Range(-277, -10);
-                buttonlist[i].GetComponent<RectTransform>().localPosition = new Vector3(buttonlist[i].GetComponent<RectTransform>().localPosition.x, RanHeight, 0);
+                float RanHeight = Random.Range(2.017f, 3.061f);
+                buttonlist[i].GetComponent<RectTransform>().localPosition = new Vector3(buttonlist[i].GetComponent<RectTransform>().localPosition.x, buttonlist[i].GetComponent<RectTransform>().localPosition.y, RanHeight);
             }
         }
 

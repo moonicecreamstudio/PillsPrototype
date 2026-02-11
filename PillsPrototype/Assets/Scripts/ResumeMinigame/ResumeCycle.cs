@@ -16,6 +16,7 @@ public class ResumeCycle : MonoBehaviour
     public PlayerStatusManager statusManager;
     public ClipBoardScript clipboard;
     bool looking;
+    AudioSource audiosource;
 
     // Start is called before the first frame update
     void Start()
@@ -54,8 +55,9 @@ public class ResumeCycle : MonoBehaviour
         EasyResumeRequirements();
 
         //Debug.Log(resumeList.Length);
+        audiosource = GetComponent<AudioSource>();
 
-        
+
     }
 
     void EasyResumeRequirements()
@@ -110,13 +112,7 @@ public class ResumeCycle : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0))
         {
-            if (statusManager.isDoingResume && looking)
-            {
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-
-                looking = false;
-            }
+            StartCoroutine(WaitAndActivateGame());
 
             
 
@@ -145,6 +141,18 @@ public class ResumeCycle : MonoBehaviour
 
 
 
+    }
+
+    public IEnumerator WaitAndActivateGame()
+    {
+        yield return new WaitForEndOfFrame();
+        if (statusManager.isDoingResume && looking)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+
+            looking = false;
+        }
     }
 
     void Listloop()
@@ -226,6 +234,7 @@ public class ResumeCycle : MonoBehaviour
 
     public void PlusPoint()
     {
+        audiosource.Play();
         clipboard.AddResume();
 
         EasyResumeRequirements();
