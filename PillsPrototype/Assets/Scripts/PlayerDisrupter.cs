@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.Rendering;
+using TMPro;
 
 public class PlayerDisrupter : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class PlayerDisrupter : MonoBehaviour
     public ScoreManager scoreManager;
     public PostProcessVolume volume;
     public PaperSortingScript1 paperSortingScript;
+    public GameObject lockInText;
 
     [Header("Dozing Parameters")]
     public float _dozingSpeed;
@@ -56,6 +58,7 @@ public class PlayerDisrupter : MonoBehaviour
     void Start()
     {
         volume.profile.TryGetSettings(out vignette);
+        lockInText.SetActive(false);
     }
     void Update()
     {
@@ -114,6 +117,7 @@ public class PlayerDisrupter : MonoBehaviour
         // Focus Bar Effect
         if (playerStatusManager._isUnfocused == true && scoreManager.isDayOver == false)
         {
+            lockInText.SetActive(true);
             cameraController.isCameraDisabled = false;
             // Move the camera down
             cameraController.cameraHolderObject.transform.position = cameraController.cameraOriginPosition.position; // This is setting it every update, NG, find a way to set up once
@@ -131,12 +135,13 @@ public class PlayerDisrupter : MonoBehaviour
 
             paperSortingScript.HideSortingGame();
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Return))
             {
                 playerStatusManager._isUnfocused = false;
                 current3 = 0f;
                 vignette.intensity.value = 0.25f;
                 vignetteValue = 0f;
+                lockInText.SetActive(false);
             }
         }
 
