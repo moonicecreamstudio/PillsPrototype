@@ -16,6 +16,7 @@ public class ResumeCycle : MonoBehaviour
     public PlayerStatusManager statusManager;
     public ClipBoardScript clipboard;
     bool looking;
+    AudioSource audiosource;
 
     // Start is called before the first frame update
     void Start()
@@ -54,8 +55,9 @@ public class ResumeCycle : MonoBehaviour
         EasyResumeRequirements();
 
         //Debug.Log(resumeList.Length);
+        audiosource = GetComponent<AudioSource>();
 
-        
+
     }
 
     void EasyResumeRequirements()
@@ -232,6 +234,7 @@ public class ResumeCycle : MonoBehaviour
 
     public void PlusPoint()
     {
+        audiosource.Play();
         clipboard.AddResume();
 
         EasyResumeRequirements();
