@@ -110,13 +110,7 @@ public class ResumeCycle : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0))
         {
-            if (statusManager.isDoingResume && looking)
-            {
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-
-                looking = false;
-            }
+            StartCoroutine(WaitAndActivateGame());
 
             
 
@@ -145,6 +139,18 @@ public class ResumeCycle : MonoBehaviour
 
 
 
+    }
+
+    public IEnumerator WaitAndActivateGame()
+    {
+        yield return new WaitForEndOfFrame();
+        if (statusManager.isDoingResume && looking)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+
+            looking = false;
+        }
     }
 
     void Listloop()

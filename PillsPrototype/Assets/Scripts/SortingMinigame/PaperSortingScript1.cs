@@ -51,6 +51,8 @@ public class PaperSortingScript1 : MonoBehaviour
 
     }
 
+    
+
     // Update is called once per frame
     void Update()
     {
@@ -67,18 +69,10 @@ public class PaperSortingScript1 : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (statusManager.isDoingSorting && looking)
-            {
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-                ButtonCanvas.SetActive(true);
-                spawnNewPaper();
-                
-                looking = false;
-                paperCanv.sortingOrder = 2;
-            }
+            StartCoroutine(WaitAndActivateGame());
 
-            
+
+
 
 
         }
@@ -98,6 +92,21 @@ public class PaperSortingScript1 : MonoBehaviour
         }
 
 
+    }
+
+    public IEnumerator WaitAndActivateGame()
+    {
+        yield return new WaitForEndOfFrame();
+        if (statusManager.isDoingSorting && looking)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            ButtonCanvas.SetActive(true);
+            spawnNewPaper();
+
+            looking = false;
+            paperCanv.sortingOrder = 2;
+        }
     }
 
 
