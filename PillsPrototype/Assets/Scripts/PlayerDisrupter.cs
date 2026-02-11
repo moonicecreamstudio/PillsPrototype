@@ -21,6 +21,7 @@ public class PlayerDisrupter : MonoBehaviour
     public GameObject mainCamera;
     public ScoreManager scoreManager;
     public PostProcessVolume volume;
+    public PaperSortingScript1 paperSortingScript;
 
     [Header("Dozing Parameters")]
     public float _dozingSpeed;
@@ -125,6 +126,10 @@ public class PlayerDisrupter : MonoBehaviour
             playerStatusManager.isDoingSorting = false;
             vignetteValue += (Time.deltaTime * 0.3f);
             vignette.intensity.value = vignetteValue;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+            paperSortingScript.HideSortingGame();
 
             if (Input.GetKeyDown(KeyCode.Space))
             {

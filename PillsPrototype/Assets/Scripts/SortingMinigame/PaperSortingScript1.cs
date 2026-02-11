@@ -80,18 +80,21 @@ public class PaperSortingScript1 : MonoBehaviour
 
         if (Input.GetKeyDown("`") && !looking)
         {
-            ButtonCanvas.SetActive(false);
-            for (int i = 0; i < paperList.Length; i++)
-            {
-                paperList[i].SetActive(false);
-            }
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            looking = true;
-            paperCanv.sortingOrder = 0;
+            HideSortingGame();
         }
+    }
 
-
+    public void HideSortingGame()
+    {
+        ButtonCanvas.SetActive(false);
+        for (int i = 0; i < paperList.Length; i++)
+        {
+            paperList[i].SetActive(false);
+        }
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        looking = true;
+        paperCanv.sortingOrder = 0;
     }
 
     public IEnumerator WaitAndActivateGame()
