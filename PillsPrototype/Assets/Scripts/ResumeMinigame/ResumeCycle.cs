@@ -215,6 +215,7 @@ public class ResumeCycle : MonoBehaviour
             Debug.Log(resumeQualities[i]);
             if ((resumeQualities[i].name == firstquality) || (resumeQualities[i].name == secondquality) || resumeQualities[i].name == thirdquality)
             {
+                Debug.Log("co");
                 PlusPoint();
                 ChoseCorrect = true;
                 break;
