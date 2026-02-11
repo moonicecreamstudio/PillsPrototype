@@ -2068,6 +2068,7 @@ MonoBehaviour:
   textMeshProText: {fileID: 1674456587}
   counterDisplay: {fileID: 1061942877}
   clipBoardScript: {fileID: 1470090618}
+  playerStatusManager: {fileID: 298227418}
   difficultyLevel: 0
   emailSentCounter: 0
   wordBankEasy:

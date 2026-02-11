@@ -10,6 +10,7 @@ public class KeyAnimator : MonoBehaviour
     public GameObject keyPivot;
     public GameObject keyModel;
     public Renderer keyRenderer;
+    public PlayerStatusManager playerStatusManager;
 
     [Header("Parameters")]
     public string letter;
@@ -23,7 +24,7 @@ public class KeyAnimator : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(letter))
+        if (Input.GetKeyDown(letter)) //playerStatusManager.isDoingTyping == true
         {
             keyRenderer.material.color = Color.green;
             keyPivot.transform.position = new Vector3(keyPivot.transform.position.x,

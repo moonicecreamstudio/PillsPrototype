@@ -9,6 +9,7 @@ public class ScreenLetterDisplayer : MonoBehaviour
     public TextMeshPro textMeshProText = null;
     public TextMeshPro counterDisplay;
     public ClipBoardScript clipBoardScript;
+    public PlayerStatusManager playerStatusManager;
 
     [Header("Parameters")]
     private string remainingWord = string.Empty;
@@ -76,7 +77,7 @@ public class ScreenLetterDisplayer : MonoBehaviour
 
     private void CheckInput()
     {
-        if (Input.anyKeyDown)
+        if (Input.anyKeyDown && playerStatusManager.isDoingTyping == true)
         {
             string keysPressed = Input.inputString;
 
