@@ -112,7 +112,7 @@ public class ScoreManager : MonoBehaviour
         if (percentageResume > 1) percentageResume = 1;
         if (percentagePaper > 1) percentagePaper = 1;
 
-        sumScore = percentageEmail + percentageResume + percentagePaper;
+        sumScore = (percentageEmail + percentageResume + percentagePaper) / 3;
         overallScore.Add(new OverallScore {day = GameSettingsManager.currentDay, score = sumScore});
 
         // Employers' Note

@@ -234,7 +234,7 @@ public class PaperSortingScript1 : MonoBehaviour
     {
         audiosource.Play();
 
-        StartCoroutine(FadeCurrentPage(0.5f, 0));
+        //StartCoroutine(FadeCurrentPage(0.5f, 0));
         
 
         float chance = Random.Range(1,10);

@@ -18852,8 +18852,8 @@ MonoBehaviour:
   percentageResume: 0
   percentagePaper: 0
   sumScore: 0
-  goodScore: 90
-  poorScore: 50
+  goodScore: 0.9
+  poorScore: 0.5
   isScoreCalculated: 0
   isDayOver: 0
   focusToTimePoints:
@@ -31418,7 +31418,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1501621832
 MonoBehaviour:
   m_ObjectHideFlags: 0
