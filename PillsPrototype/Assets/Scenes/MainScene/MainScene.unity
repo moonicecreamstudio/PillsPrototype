@@ -1511,6 +1511,7 @@ MonoBehaviour:
   dayDisplayer: {fileID: 303189537}
   clipBoardScript: {fileID: 1470090618}
   dayTimer: {fileID: 216143566}
+  dialogueSystemManager: {fileID: 1228970724}
   maxDay: 3
   sceneTransitioner: {fileID: 34038344}
   levelMetrics:
@@ -1518,8 +1519,8 @@ MonoBehaviour:
     emailReq: 1
     resumeReq: 1
     sortReq: 1
-  - secondsInLevel: 60
-    emailReq: 3
+  - secondsInLevel: 90
+    emailReq: 5
     resumeReq: 5
     sortReq: 5
   - secondsInLevel: 300
@@ -5509,7 +5510,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -112.7, y: -59.8}
+  m_AnchoredPosition: {x: -110.4, y: -58}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &266728176
@@ -25801,6 +25802,7 @@ MonoBehaviour:
   subtitleBackdrop: {fileID: 878746942}
   timer: 0
   timeToNext: 0
+  hasDayOnePassed: 0
   textData:
   - textID: intro_01
     displayTime: 4

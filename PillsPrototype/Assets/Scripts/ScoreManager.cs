@@ -61,6 +61,14 @@ public class ScoreManager : MonoBehaviour
             isDayOver = true;
         }
 
+        // When the player has finished scoring
+        //if (clipBoardScript.EmailNum / clipBoardScript.EmailReq >= 1 &&
+        //    clipBoardScript.ResumeNum / clipBoardScript.ResumeReq >= 1 &&
+        //    clipBoardScript.PaperNum / clipBoardScript.PaperReq >= 1)
+        //{
+        //    isDayOver = true;
+        //}
+
         // Calculate score
         if (isDayOver == true && isScoreCalculated == false)
         {
@@ -75,15 +83,18 @@ public class ScoreManager : MonoBehaviour
         // Display Score
         if (isDayOver == true) uIWindowMover.windowOn();
 
-        // Graph
-        for (int i = 0; i < uILinerRenderer.points.Length; i++)
+        if (isDayOver == false)
         {
-            if (previousTimerValue >= (clockSlider.maxValue / uILinerRenderer.points.Length) * (uILinerRenderer.points.Length - i) && 
-                clockSlider.value < (clockSlider.maxValue / uILinerRenderer.points.Length) * (uILinerRenderer.points.Length - i))
+            // Graph
+            for (int i = 0; i < uILinerRenderer.points.Length; i++)
+            {
+                if (previousTimerValue >= (clockSlider.maxValue / uILinerRenderer.points.Length) * (uILinerRenderer.points.Length - i) &&
+                    clockSlider.value < (clockSlider.maxValue / uILinerRenderer.points.Length) * (uILinerRenderer.points.Length - i))
                 {
                     uILinerRenderer.points[i] = new Vector2((1 - (clockSlider.value / clockSlider.maxValue)) * 200, (focusSlider.value / focusSlider.maxValue) * 100);
                     uILinerRenderer.SetAllDirty();
                 }
+            }
         }
 
         previousTimerValue = clockSlider.value;

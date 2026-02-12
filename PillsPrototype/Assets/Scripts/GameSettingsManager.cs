@@ -9,6 +9,7 @@ public class GameSettingsManager : MonoBehaviour
     public TextMeshProUGUI dayDisplayer;
     public ClipBoardScript clipBoardScript;
     public SliderManager dayTimer;
+    public DialogueSystemManager dialogueSystemManager;
 
     [Header("Parameters")]
     public int maxDay;
@@ -29,6 +30,11 @@ public class GameSettingsManager : MonoBehaviour
     {
         currentDay += 1;
         dayDisplayer.text = currentDay.ToString();
+        if (currentDay > 1)
+        {
+            dialogueSystemManager.hasDayOnePassed = true;
+        }
+
         if (currentDay >= maxDay + 1)
         {
             sceneTransitioner.SwitchScenes("GameOverScene");

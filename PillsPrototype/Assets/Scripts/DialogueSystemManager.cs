@@ -15,6 +15,7 @@ public class DialogueSystemManager : MonoBehaviour
     public float timer;
     public float timeToNext; // Time it takes to change and remove the text.
     private Coroutine currentConsumeRoutine;
+    public bool hasDayOnePassed;
 
     [System.Serializable]
     public class TextData
@@ -29,9 +30,13 @@ public class DialogueSystemManager : MonoBehaviour
 
     void Start()
     {
+        subtitleBackdrop.SetActive(false);
         subtitleText.text = "";
         subtitleText2.text = "";
-        StartCoroutine(IntroText());
+        if (hasDayOnePassed == false)
+        {
+            StartCoroutine(IntroText());
+        }
     }
     void Update()
     {
