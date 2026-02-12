@@ -1509,8 +1509,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayDisplayer: {fileID: 303189537}
+  clipBoardScript: {fileID: 1470090618}
+  dayTimer: {fileID: 216143566}
   maxDay: 3
   sceneTransitioner: {fileID: 34038344}
+  levelMetrics:
+  - secondsInLevel: 5
+    emailReq: 1
+    resumeReq: 1
+    sortReq: 1
+  - secondsInLevel: 60
+    emailReq: 3
+    resumeReq: 5
+    sortReq: 5
+  - secondsInLevel: 300
+    emailReq: 20
+    resumeReq: 8
+    sortReq: 35
 --- !u!4 &80366631
 Transform:
   m_ObjectHideFlags: 0
