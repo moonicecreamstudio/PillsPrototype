@@ -23,6 +23,7 @@ public class PlayerStatusManager : MonoBehaviour
     public bool isDoingTyping;
     public bool isDoingResume;
     public bool isDoingSorting;
+    public bool isGameStarted;
     public float pillDosageAmount;
     public float chanceToTremors;
 
@@ -115,9 +116,13 @@ public class PlayerStatusManager : MonoBehaviour
         // If the player begins any minigame, the day timer starts
         if (isDoingTyping || isDoingResume || isDoingSorting)
         {
-            dayTimer.isActive = true;
-            focusBar.isActive = true;
-            energyBar.isActive = true;
+            if (isGameStarted == false)
+            {
+                isGameStarted = true;
+                dayTimer.isActive = true;
+                focusBar.isActive = true;
+                //energyBar.isActive = true; // Disabled for the cut feature
+            }
         }
 
         // Allows to run code once for barks

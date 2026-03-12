@@ -15,6 +15,7 @@ public class PaperSortingScript1 : MonoBehaviour
     public PlayerStatusManager statusManager;
     public ClipBoardScript clipboard;
     public Canvas paperCanv;
+    public KeyCode escapeKey;
 
     GameObject[] buttonlist;
 
@@ -78,7 +79,7 @@ public class PaperSortingScript1 : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown("`") && !looking)
+        if (Input.GetKeyDown(escapeKey) && !looking)
         {
             HideSortingGame();
         }

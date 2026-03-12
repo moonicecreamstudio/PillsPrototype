@@ -55,110 +55,116 @@ public class CameraController : MonoBehaviour
             orientation.rotation = Quaternion.Euler(0, yRotation, 0);
         }
 
-        // Exit out of focus, return camera to original position
-        if (Input.GetKeyDown(escapeKey))
+        if (PauseMenuManager.isGamePaused != true)
         {
-            isCameraDisabled = false;
-            cameraHolderObject.transform.position = cameraOriginPosition.position;
-            playerStatusManager.isDoingTyping = false;
-            playerStatusManager.isDoingResume = false;
-            playerStatusManager.isDoingSorting = false;
-        }
-
-        // Handle what the player clicks on, and what do to
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray raycast = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-
-            // Check if what has been clicked, middle of the screen
-
-            if (Physics.Raycast(raycast, out RaycastHit hit, 100f) && isCameraDisabled == false)
+            // Exit out of focus, return camera to original position
+            if (Input.GetKeyDown(escapeKey))
             {
-                Debug.Log("Clicked object: " + hit.collider.name);
+                isCameraDisabled = false;
+                cameraHolderObject.transform.position = cameraOriginPosition.position;
+                playerStatusManager.isDoingTyping = false;
+                playerStatusManager.isDoingResume = false;
+                playerStatusManager.isDoingSorting = false;
+            }
 
-                if (hit.collider.CompareTag("Focus Pill"))
+            // Handle what the player clicks on, and what do to
+            if (Input.GetMouseButtonDown(0))
+            {
+                Ray raycast = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+
+                // Check if what has been clicked, middle of the screen
+
+                if (Physics.Raycast(raycast, out RaycastHit hit, 100f) && isCameraDisabled == false)
                 {
-                    focusBottle.isClickedOn = true;
-                    isCameraDisabled = true;
-                }
+                    Debug.Log("Clicked object: " + hit.collider.name);
 
-                //if (hit.collider.CompareTag("Energy Pill"))
-                //{
-                //    energyBottle.isClickedOn = true;
-                //    isCameraDisabled = true;
-                //}
-
-                //if (hit.collider.CompareTag("Calmness Pill"))
-                //{
-                //    calmnessBottle.isClickedOn = true;
-                //    isCameraDisabled = true;
-                //}
-
-                if (hit.collider.CompareTag("Typing Minigame"))
-                {
-                    Debug.Log("Zoom in typing game.");
-                    isCameraDisabled = true;
-                    //cameraCamera.fieldOfView = 80;
-                    cameraHolderObject.transform.position = cameraTypingPosition.position;
-                    cameraHolderObject.transform.localEulerAngles = cameraTypingPosition.localEulerAngles;
-                    playerStatusManager.isDoingTyping = true;
-                }
-
-                if (hit.collider.CompareTag("Resume Minigame"))
-                {
-                    Debug.Log("Zoom in resume game.");
-                    isCameraDisabled = true;
-                    //cameraCamera.fieldOfView = 80;
-                    cameraHolderObject.transform.position = cameraResumePosition.position;
-                    cameraHolderObject.transform.localEulerAngles = cameraResumePosition.localEulerAngles;
-                    playerStatusManager.isDoingResume = true;
-                }
-
-                if (hit.collider.CompareTag("Sorting Minigame"))
-                {
-                    Debug.Log("Zoom in sorting game.");
-                    isCameraDisabled = true;
-                    //cameraCamera.fieldOfView = 80;
-                    cameraHolderObject.transform.position = cameraSortingPosition.position;
-                    cameraHolderObject.transform.localEulerAngles = cameraSortingPosition.localEulerAngles;
-                    playerStatusManager.isDoingSorting = true;
-                }
-
-                if (hit.collider.CompareTag("Sort Complete Button"))
-                {
-                    Debug.Log("Sort complete.");
-                    sortButton.StartCoroutine(sortButton.ButtonPressed());
-                    if (taskManager.tasks.Count > 0)
+                    if (hit.collider.CompareTag("Focus Pill"))
                     {
-                        GameObject first = taskManager.tasks[0];
-                        taskManager.tasks.RemoveAt(0);
-                        Destroy(first);
+                        focusBottle.isClickedOn = true;
+                        isCameraDisabled = true;
+                    }
+
+                    //if (hit.collider.CompareTag("Energy Pill"))
+                    //{
+                    //    energyBottle.isClickedOn = true;
+                    //    isCameraDisabled = true;
+                    //}
+
+                    //if (hit.collider.CompareTag("Calmness Pill"))
+                    //{
+                    //    calmnessBottle.isClickedOn = true;
+                    //    isCameraDisabled = true;
+                    //}
+
+                    if (hit.collider.CompareTag("Typing Minigame"))
+                    {
+                        Debug.Log("Zoom in typing game.");
+                        isCameraDisabled = true;
+                        //cameraCamera.fieldOfView = 80;
+                        cameraHolderObject.transform.position = cameraTypingPosition.position;
+                        cameraHolderObject.transform.localEulerAngles = cameraTypingPosition.localEulerAngles;
+                        playerStatusManager.isDoingTyping = true;
+                    }
+
+                    if (hit.collider.CompareTag("Resume Minigame"))
+                    {
+                        Debug.Log("Zoom in resume game.");
+                        isCameraDisabled = true;
+                        //cameraCamera.fieldOfView = 80;
+                        cameraHolderObject.transform.position = cameraResumePosition.position;
+                        cameraHolderObject.transform.localEulerAngles = cameraResumePosition.localEulerAngles;
+                        playerStatusManager.isDoingResume = true;
+                    }
+
+                    if (hit.collider.CompareTag("Sorting Minigame"))
+                    {
+                        Debug.Log("Zoom in sorting game.");
+                        isCameraDisabled = true;
+                        //cameraCamera.fieldOfView = 80;
+                        cameraHolderObject.transform.position = cameraSortingPosition.position;
+                        cameraHolderObject.transform.localEulerAngles = cameraSortingPosition.localEulerAngles;
+                        playerStatusManager.isDoingSorting = true;
+                    }
+
+                    if (hit.collider.CompareTag("Sort Complete Button"))
+                    {
+                        Debug.Log("Sort complete.");
+                        sortButton.StartCoroutine(sortButton.ButtonPressed());
+                        if (taskManager.tasks.Count > 0)
+                        {
+                            GameObject first = taskManager.tasks[0];
+                            taskManager.tasks.RemoveAt(0);
+                            Destroy(first);
+                        }
+                    }
+
+                    if (hit.collider.CompareTag("Hire Complete Button"))
+                    {
+                        Debug.Log("Hire complete.");
+                        hireButton.StartCoroutine(hireButton.ButtonPressed());
+                        if (taskManager.tasks.Count > 0)
+                        {
+                            GameObject first = taskManager.tasks[0];
+                            taskManager.tasks.RemoveAt(0);
+                            Destroy(first);
+                        }
                     }
                 }
 
-                if (hit.collider.CompareTag("Hire Complete Button"))
+                // Secondary Clicking
+
+                Ray raycast2 = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit2;
+
+                if (Physics.Raycast(raycast2, out hit2) && isCameraDisabled == true)
                 {
-                    Debug.Log("Hire complete.");
-                    hireButton.StartCoroutine(hireButton.ButtonPressed());
-                    if (taskManager.tasks.Count > 0)
-                    {
-                        GameObject first = taskManager.tasks[0];
-                        taskManager.tasks.RemoveAt(0);
-                        Destroy(first);
-                    }
+                    // Name of clicked object
+                    Debug.Log("Hit object: " + hit2.collider.gameObject.name);
                 }
             }
-
-            // Secondary Clicking
-
-            Ray raycast2 = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit2;
-
-            if (Physics.Raycast(raycast2, out hit2) && isCameraDisabled == true)
-            {
-                // Name of clicked object
-                Debug.Log("Hit object: " + hit2.collider.gameObject.name);
-            }
         }
+
+
+        
     }
 }
