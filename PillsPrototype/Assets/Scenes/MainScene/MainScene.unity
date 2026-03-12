@@ -15211,6 +15211,7 @@ MonoBehaviour:
   currentResume: 0
   statusManager: {fileID: 298227418}
   clipboard: {fileID: 1470090618}
+  escapeKey: 27
 --- !u!82 &713468144
 AudioSource:
   m_ObjectHideFlags: 0
@@ -36656,6 +36657,7 @@ MonoBehaviour:
   xRotation: 0
   yRotation: 0
   isCameraDisabled: 0
+  escapeKey: 27
 --- !u!4 &1753034865
 Transform:
   m_ObjectHideFlags: 0

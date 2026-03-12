@@ -29,6 +29,7 @@ public class CameraController : MonoBehaviour
     public float xRotation;
     public float yRotation;
     public bool isCameraDisabled;
+    public KeyCode escapeKey;
 
     private void Start()
     {
@@ -55,7 +56,7 @@ public class CameraController : MonoBehaviour
         }
 
         // Exit out of focus, return camera to original position
-        if (Input.GetKeyDown("`"))
+        if (Input.GetKeyDown(escapeKey))
         {
             isCameraDisabled = false;
             cameraHolderObject.transform.position = cameraOriginPosition.position;

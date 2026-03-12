@@ -17,6 +17,7 @@ public class ResumeCycle : MonoBehaviour
     public ClipBoardScript clipboard;
     public static bool looking;
     AudioSource audiosource;
+    public KeyCode escapeKey;
 
     // Start is called before the first frame update
     void Start()
@@ -118,7 +119,7 @@ public class ResumeCycle : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown("`") && !looking)
+        if (Input.GetKeyDown(escapeKey) && !looking)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
