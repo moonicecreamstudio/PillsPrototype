@@ -67,7 +67,7 @@ public class ScreenLetterDisplayer : MonoBehaviour
     private void SetRemainingWord(string newString)
     {
         remainingWord = newString;
-        textMeshProText.text = remainingWord;
+        textMeshProText.text = remainingWord.Replace(" ", "_");
     }
 
     private void Update()
