@@ -119,11 +119,12 @@ public class PlayerDisrupter : MonoBehaviour
         {
             lockInText.SetActive(true);
             cameraController.isCameraDisabled = false;
-            // Move the camera down
+            // Move the camera up
             cameraController.cameraHolderObject.transform.position = cameraController.cameraOriginPosition.position; // This is setting it every update, NG, find a way to set up once
             current3 = Mathf.MoveTowards(current3, 1, _dozingSpeed * Time.deltaTime);
             cameraController.xRotation = Mathf.Lerp(cameraController.xRotation, -90, curve.Evaluate(current3));
             if (pillChoiceManager.isActiveAndEnabled) pillChoiceManager.NoButton();
+            ResumeCycle.looking = true;
             cameraController.isCameraDisabled = false;
             playerStatusManager.isDoingTyping = false;
             playerStatusManager.isDoingResume = false;

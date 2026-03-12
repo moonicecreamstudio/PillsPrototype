@@ -15,7 +15,7 @@ public class ResumeCycle : MonoBehaviour
     string thirdquality;
     public PlayerStatusManager statusManager;
     public ClipBoardScript clipboard;
-    bool looking;
+    public static bool looking;
     AudioSource audiosource;
 
     // Start is called before the first frame update
@@ -138,9 +138,6 @@ public class ResumeCycle : MonoBehaviour
         {
             ResumeAccept();
         }*/
-
-
-
     }
 
     public IEnumerator WaitAndActivateGame()
