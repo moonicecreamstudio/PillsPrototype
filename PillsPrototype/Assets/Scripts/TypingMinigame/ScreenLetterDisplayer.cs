@@ -104,7 +104,7 @@ public class ScreenLetterDisplayer : MonoBehaviour
 
     private bool IsCorrectLetter(string letter)
     {
-        return remainingWord.IndexOf(letter) == 0;
+        return remainingWord.ToLower().IndexOf(letter.ToLower()) == 0;
     }
 
     private void RemoveLetter()
