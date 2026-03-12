@@ -11,10 +11,11 @@ public class PauseMenuManager : MonoBehaviour
     public SliderManager dayClock;
     public PlayerStatusManager playerStatusManager;
     public UIWindowMover pauseMenuUI;
+    public CameraController cameraController;
     public GameObject subMenu1;
     public GameObject quitGameConfirm;
-    public CameraController cameraController;
     public GameObject mainMenuConfirm;
+    public GameObject optionsMenu;
 
     [Header("Variables")]
     public static bool isGamePaused;
@@ -28,6 +29,7 @@ public class PauseMenuManager : MonoBehaviour
         subMenu1.SetActive(true);
         mainMenuConfirm.SetActive(false);
         quitGameConfirm.SetActive(false);
+        optionsMenu.SetActive(false);
     }
 
     void Update()
@@ -38,6 +40,7 @@ public class PauseMenuManager : MonoBehaviour
         }
     }
 
+    // Return to Main Menu
     public void ReturnMainMenu()
     {
         subMenu1.SetActive(false);
@@ -55,6 +58,20 @@ public class PauseMenuManager : MonoBehaviour
         SceneManager.LoadScene("MainMenuScene");
     }
 
+    // Options
+
+    public void OpenOptions()
+    {
+        optionsMenu.SetActive(true);
+        subMenu1.SetActive(false);
+    }
+    public void ExitOptions()
+    {
+        optionsMenu.SetActive(false);
+        subMenu1.SetActive(true);
+    }
+
+    // Quit Game
     public void QuitGame()
     {
         quitGameConfirm.SetActive(true);
@@ -122,20 +139,28 @@ public class PauseMenuManager : MonoBehaviour
 
         if (isGamePaused == true)
         {
-            Debug.Log("NOT PAUSED");
-            if (isOriginallyLocked == true) Cursor.lockState = CursorLockMode.Locked;
-            else if (isOriginallyLocked == false) Cursor.lockState = CursorLockMode.None;
-            if (isOriginallyVisible == true) Cursor.visible = true;
-            else if(isOriginallyVisible == false) Cursor.visible = false;
-            if (isOriginallyCameraDisabled == true) cameraController.isCameraDisabled = true;
-            else if(isOriginallyCameraDisabled == false) cameraController.isCameraDisabled = false;
-            isGamePaused = false;
-            pauseMenuUI.windowOff();
-            focusSlider.isActive = true;
-            dayClock.isActive = true;
-
+            UnpauseButton();
             yield break;
         }
     }
 
+    public void UnpauseButton()
+    {
+        Debug.Log("NOT PAUSED");
+        subMenu1.SetActive(true);
+        mainMenuConfirm.SetActive(false);
+        quitGameConfirm.SetActive(false);
+        optionsMenu.SetActive(false);
+
+        if (isOriginallyLocked == true) Cursor.lockState = CursorLockMode.Locked;
+        else if (isOriginallyLocked == false) Cursor.lockState = CursorLockMode.None;
+        if (isOriginallyVisible == true) Cursor.visible = true;
+        else if (isOriginallyVisible == false) Cursor.visible = false;
+        if (isOriginallyCameraDisabled == true) cameraController.isCameraDisabled = true;
+        else if (isOriginallyCameraDisabled == false) cameraController.isCameraDisabled = false;
+        isGamePaused = false;
+        pauseMenuUI.windowOff();
+        focusSlider.isActive = true;
+        dayClock.isActive = true;
+    }
 }

@@ -22,6 +22,7 @@ public class CameraController : MonoBehaviour
     public Transform cameraResumePosition;
     public Transform cameraSortingPosition;
     public PlayerStatusManager playerStatusManager;
+    public Slider mouseLevel;
 
     [Header("Variables")]
     public float sensX;
@@ -30,12 +31,19 @@ public class CameraController : MonoBehaviour
     public float yRotation;
     public bool isCameraDisabled;
     public KeyCode escapeKey;
+    public float sensitivityLevel;
 
     private void Start()
     {
         // At the start, lock and hide the cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        sensitivityLevel = mouseLevel.value;
+    }
+
+    public void MouseSensitivityToggle()
+    {
+        sensitivityLevel = mouseLevel.value;
     }
 
     private void Update()
@@ -43,8 +51,8 @@ public class CameraController : MonoBehaviour
         if (isCameraDisabled == false)
         {
             // Get mouse input
-            float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
-            float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * -sensY;
+            float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX * sensitivityLevel;
+            float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * -sensY * sensitivityLevel;
 
             yRotation += mouseX;
             xRotation += mouseY;
