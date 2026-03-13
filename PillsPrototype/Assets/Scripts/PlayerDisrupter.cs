@@ -125,6 +125,7 @@ public class PlayerDisrupter : MonoBehaviour
             cameraController.xRotation = Mathf.Lerp(cameraController.xRotation, -90, curve.Evaluate(current3));
             if (pillChoiceManager.isActiveAndEnabled) pillChoiceManager.NoButton();
             ResumeCycle.looking = true;
+            PaperSortingScript1.looking = true;
             cameraController.isCameraDisabled = false;
             playerStatusManager.isDoingTyping = false;
             playerStatusManager.isDoingResume = false;

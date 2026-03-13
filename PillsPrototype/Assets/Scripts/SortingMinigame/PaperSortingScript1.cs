@@ -19,7 +19,7 @@ public class PaperSortingScript1 : MonoBehaviour
 
     GameObject[] buttonlist;
 
-    bool looking;
+    public static bool looking;
 
     AudioSource audiosource;
 
