@@ -12,7 +12,7 @@ public class ResumeCycle : MonoBehaviour
     public int currentResume;
     string firstquality;
     string secondquality;
-    string thirdquality;
+    //string thirdquality;
     public PlayerStatusManager statusManager;
     public ClipBoardScript clipboard;
     public static bool looking;
@@ -68,18 +68,18 @@ public class ResumeCycle : MonoBehaviour
 
         int option1 = 0;
         int option2 = 0;
-        int option3 = 0;
+        //int option3 = 0;
         //bool chooseran = false;
         for (int i = 0; i < requirmentList.Length; i++)
         {
             requirmentList[i].gameObject.SetActive(false);
         }
 
-        while ((option1 == option2) || (option1 == option3) || (option2 == option3))
+        while ((option1 == option2))
         {
             option1 = Random.Range(0, requirmentList.Length);
             option2 = Random.Range(0, requirmentList.Length);
-            option3 = Random.Range(0, requirmentList.Length);
+            //option3 = Random.Range(0, requirmentList.Length);
             //chooseran = true;
             /*Debug.Log(option3);
             Debug.Log(option1);
@@ -98,9 +98,9 @@ public class ResumeCycle : MonoBehaviour
         secondquality = requirmentList[option2].name;
 
 
-        requirmentList[option3].SetActive(true);
-        requirmentList[option3].GetComponent<RectTransform>().localPosition = new Vector3(0.07899928f, -0.347f, -0.5550001f);
-        thirdquality = requirmentList[option3].name;
+        //requirmentList[option3].SetActive(true);
+        //requirmentList[option3].GetComponent<RectTransform>().localPosition = new Vector3(0.07899928f, -0.347f, -0.5550001f);
+        //thirdquality = requirmentList[option3].name;
 
     }
 
@@ -211,7 +211,7 @@ public class ResumeCycle : MonoBehaviour
         {
             resumeQualities[i] = chosenResume.transform.GetChild(i).gameObject;
             Debug.Log(resumeQualities[i]);
-            if ((resumeQualities[i].name == firstquality) || (resumeQualities[i].name == secondquality) || resumeQualities[i].name == thirdquality)
+            if ((resumeQualities[i].name == firstquality) || (resumeQualities[i].name == secondquality))
             {
                 
                 PlusPoint();
