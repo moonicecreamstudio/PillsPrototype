@@ -86,6 +86,20 @@ public class ClipBoardScript : MonoBehaviour
         currentResumeText.text = ResumeNum.ToString();
     }
 
+    public void RemoveResume()
+    {
+        
+
+        if (ResumeNum > 0)
+        {
+            ResumeNum -= 1;
+
+        }
+
+
+        currentResumeText.text = ResumeNum.ToString();
+    }
+
     public void AddPaper()
     {
         PaperNum += 1;

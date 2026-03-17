@@ -213,7 +213,7 @@ public class ResumeCycle : MonoBehaviour
             Debug.Log(resumeQualities[i]);
             if ((resumeQualities[i].name == firstquality) || (resumeQualities[i].name == secondquality) || resumeQualities[i].name == thirdquality)
             {
-                Debug.Log("co");
+                
                 PlusPoint();
                 ChoseCorrect = true;
                 break;
@@ -223,6 +223,7 @@ public class ResumeCycle : MonoBehaviour
         if (ChoseCorrect == false)
         {
             //Debug.Log("you lose something or other");
+            MinusPoint();
             EasyResumeRequirements();
         }
         
@@ -235,6 +236,15 @@ public class ResumeCycle : MonoBehaviour
     {
         audiosource.Play();
         clipboard.AddResume();
+
+        EasyResumeRequirements();
+
+    }
+
+    public void MinusPoint()
+    {
+        //audiosource.Play();
+        clipboard.RemoveResume();
 
         EasyResumeRequirements();
 
