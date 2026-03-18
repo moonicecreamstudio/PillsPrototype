@@ -8,12 +8,15 @@ public class ScreenEffectsHandler : MonoBehaviour
     [Header("Misc. References")]
     public Slider focusSlider;
     public Slider clockSlider;
+    public PlayerStatusManager statusManager;
 
     [Header("Screen Effect References")]
     public Image headInTheCloudsVignette;
+    public Image overdoseVignette;
 
     //colors for each screen effects
     Color headInTheCloudsAlphaChange;
+    Color overdoseVignetteAlphaChange;
 
     //Slider Manager
     SliderManager focusSliderManager;
@@ -28,6 +31,8 @@ public class ScreenEffectsHandler : MonoBehaviour
         //set base colors to white and transparent
         headInTheCloudsAlphaChange = Color.white;
         headInTheCloudsAlphaChange.a = 0;
+        overdoseVignetteAlphaChange = Color.white;
+        overdoseVignetteAlphaChange.a = 0;
 
         //obtain slider manager
         focusSliderManager = focusSlider.GetComponent<SliderManager>();
@@ -47,8 +52,16 @@ public class ScreenEffectsHandler : MonoBehaviour
             vignetteAlpha = 0;
         }
 
-        //adjust alpha values based on current focus level
+        //adjust head in the clouds alpha values based on current focus level
         headInTheCloudsAlphaChange.a = vignetteAlpha / maxFocus;
         headInTheCloudsVignette.color = headInTheCloudsAlphaChange;
+
+        //adjust overdose alpha value to appear upon overdose
+        if (statusManager.currentIntake > statusManager.intakeThreshold && overdoseVignetteAlphaChange.a <= 230)
+        {
+            overdoseVignetteAlphaChange.a += 0.0004f;
+        }
+
+        overdoseVignette.color = overdoseVignetteAlphaChange;
     }
 }

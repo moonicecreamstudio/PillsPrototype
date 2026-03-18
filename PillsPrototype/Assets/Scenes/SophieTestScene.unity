@@ -27650,6 +27650,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6730814320446603013, guid: 9c8553d240c64844ab51214edf00d925, type: 3}
   m_PrefabInstance: {fileID: 127036880}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1208076415 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6289415552417523783, guid: b5b1a4798d455b948b9618d0e8c1a645, type: 3}
+  m_PrefabInstance: {fileID: 6361457063887909308}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1208724425 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6730814320446603013, guid: 9c8553d240c64844ab51214edf00d925, type: 3}
@@ -48138,6 +48149,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7151690644422048597, guid: b5b1a4798d455b948b9618d0e8c1a645, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5.04155
+      objectReference: {fileID: 0}
     - target: {fileID: 7157166891873035688, guid: b5b1a4798d455b948b9618d0e8c1a645, type: 3}
       propertyPath: clockSlider
       value: 
@@ -48146,6 +48161,14 @@ PrefabInstance:
       propertyPath: focusSlider
       value: 
       objectReference: {fileID: 448691421}
+    - target: {fileID: 7157166891873035688, guid: b5b1a4798d455b948b9618d0e8c1a645, type: 3}
+      propertyPath: statusManager
+      value: 
+      objectReference: {fileID: 298227418}
+    - target: {fileID: 7157166891873035688, guid: b5b1a4798d455b948b9618d0e8c1a645, type: 3}
+      propertyPath: overdoseVignette
+      value: 
+      objectReference: {fileID: 1208076415}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
