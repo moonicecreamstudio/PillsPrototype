@@ -6687,6 +6687,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficultyLevel: 0
+  sortingScript1: {fileID: 0}
+  ResumeCycle: {fileID: 0}
 --- !u!1 &299176971
 GameObject:
   m_ObjectHideFlags: 0
@@ -24614,6 +24616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0ac25d708f2ad40930e62a52b5ef5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FocusDifficult: {fileID: 298227420}
   ButtonCanvas: {fileID: 408806533}
   paperList: []
   paperObjects: {fileID: 1575341246}
