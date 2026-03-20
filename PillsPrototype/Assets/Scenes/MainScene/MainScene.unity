@@ -17258,7 +17258,7 @@ MonoBehaviour:
   currentResume: 0
   statusManager: {fileID: 298227418}
   clipboard: {fileID: 1470090618}
-  escapeKey: 27
+  escapeKey: 101
 --- !u!82 &713468144
 AudioSource:
   m_ObjectHideFlags: 0
@@ -25249,7 +25249,7 @@ MonoBehaviour:
   statusManager: {fileID: 298227418}
   clipboard: {fileID: 1470090618}
   paperCanv: {fileID: 1052281015}
-  escapeKey: 27
+  escapeKey: 101
 --- !u!114 &1052281013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26708,7 +26708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57b88394891a4504da51fe632393738d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseButton: 96
+  pauseButton: 27
   focusSlider: {fileID: 448691422}
   dayClock: {fileID: 216143566}
   playerStatusManager: {fileID: 298227418}
@@ -40684,7 +40684,7 @@ MonoBehaviour:
   xRotation: 0
   yRotation: 0
   isCameraDisabled: 0
-  escapeKey: 27
+  escapeKey: 101
   sensitivityLevel: 0
   emailExitSign: {fileID: 954388265}
   resumeExitSign: {fileID: 1673925815}

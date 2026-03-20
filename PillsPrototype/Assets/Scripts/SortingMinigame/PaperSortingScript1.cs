@@ -241,7 +241,7 @@ public class PaperSortingScript1 : MonoBehaviour
 
         if (FocusDifficult.difficultyLevel == 0)
         {
-            chance = Random.Range(1, 6);
+            chance = Random.Range(4, 15);
         }
         else if (FocusDifficult.difficultyLevel == 1)
         {

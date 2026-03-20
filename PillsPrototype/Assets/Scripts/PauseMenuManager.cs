@@ -34,7 +34,7 @@ public class PauseMenuManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(pauseButton) && playerStatusManager.isGameStarted == true)
+        if (Input.GetKeyDown(pauseButton) )//&& playerStatusManager.isGameStarted == true)
         {
             StartCoroutine(PauseGame());
         }
