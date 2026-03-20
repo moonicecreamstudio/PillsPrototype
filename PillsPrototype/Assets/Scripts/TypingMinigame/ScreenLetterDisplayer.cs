@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ScreenLetterDisplayer : MonoBehaviour
 {
+    public FocusTaskRelation FocusDifficult;
+
     [Header("References")]
     public TextMeshPro textMeshProText = null;
     public TextMeshPro counterDisplay;
@@ -33,7 +35,10 @@ public class ScreenLetterDisplayer : MonoBehaviour
 
         // Set difficulty
 
-        if (emailSentCounter == 7)
+        difficultyLevel = FocusDifficult.difficultyLevel;
+
+
+        /*if (emailSentCounter == 7)
         {
             difficultyLevel = 1;
         }
@@ -41,7 +46,7 @@ public class ScreenLetterDisplayer : MonoBehaviour
         if (emailSentCounter == 14)
         {
             difficultyLevel = 2;
-        }
+        }*/
 
         // Get bank word
 
@@ -51,13 +56,14 @@ public class ScreenLetterDisplayer : MonoBehaviour
             SetRemainingWord(currentWord);
         }
 
-        if (difficultyLevel == 1)
+        if (difficultyLevel == 1 || difficultyLevel == 2)
         {
             currentWord = wordBankMedium[Random.Range(0, wordBankMedium.Count)];
             SetRemainingWord(currentWord);
         }
 
-        if (difficultyLevel == 2)
+        
+        if (difficultyLevel == 3)
         {
             currentWord = wordBankHard[Random.Range(0, wordBankHard.Count)];
             SetRemainingWord(currentWord);

@@ -2450,6 +2450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00bfaeec92ad0fa468944cad59d7df7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FocusDifficult: {fileID: 298227420}
   textMeshProText: {fileID: 1674456587}
   counterDisplay: {fileID: 1061942877}
   clipBoardScript: {fileID: 1470090618}
@@ -17056,6 +17057,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 245e250020abe7a439538654b431527c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FocusDifficult: {fileID: 298227420}
+  Or: {fileID: 1980871617}
   easyResumes: {fileID: 570395948}
   requirments: {fileID: 871263433}
   resumeList: []
