@@ -30,6 +30,7 @@ public class GameSettingsManager : MonoBehaviour
     {
         currentDay += 1;
         dayDisplayer.text = currentDay.ToString();
+
         if (currentDay > 1)
         {
             dialogueSystemManager.hasDayOnePassed = true;

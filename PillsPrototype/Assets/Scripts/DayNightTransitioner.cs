@@ -15,10 +15,12 @@ public class DayNightTransitioner : MonoBehaviour
 
     void Update()
     {
+
         if (dayClock.value <= 0)
         {
             StartCoroutine(NextDay());
         }
+
     }
 
     IEnumerator NextDay()
