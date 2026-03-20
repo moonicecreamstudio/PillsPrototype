@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PaperSortingScript1 : MonoBehaviour
 {
 
-
+    public FocusTaskRelation FocusDifficult;
     //public CameraController controller;
     public GameObject ButtonCanvas;
     public GameObject[] paperList;
@@ -235,10 +235,34 @@ public class PaperSortingScript1 : MonoBehaviour
     {
         audiosource.Play();
 
-        //StartCoroutine(FadeCurrentPage(0.5f, 0));
-        
+        float chance;
 
-        float chance = Random.Range(1,10);
+        //StartCoroutine(FadeCurrentPage(0.5f, 0));
+
+        if (FocusDifficult.difficultyLevel == 0)
+        {
+            chance = Random.Range(1, 6);
+        }
+        else if (FocusDifficult.difficultyLevel == 1)
+        {
+            chance = Random.Range(1, 15);
+        }
+        else if (FocusDifficult.difficultyLevel == 2)
+        {
+            chance = Random.Range(1, 10);
+        }
+        else if (FocusDifficult.difficultyLevel == 3)
+        {
+            chance = 0;
+        }
+        else
+        {
+            chance = Random.Range(1, 10);
+        }
+
+
+
+        
 
         if (chance < 5)
         {
