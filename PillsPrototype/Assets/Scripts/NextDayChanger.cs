@@ -8,7 +8,7 @@ public class NextDayChanger : MonoBehaviour
 {
     public TextMeshProUGUI dayDisplayer;
 
-    private void OnParticleUpdateJobScheduled()
+    public void NextDaySwitch()
     {
         if (dayDisplayer.text == "1")
         {
