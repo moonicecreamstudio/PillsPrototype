@@ -6,6 +6,7 @@ using UnityEngine;
 public class ResumeCycle : MonoBehaviour
 {
     public FocusTaskRelation FocusDifficult;
+    public GameObject ExitSign;
     public GameObject Or;
     public GameObject easyResumes;
     public GameObject requirments;
@@ -139,6 +140,7 @@ public class ResumeCycle : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             looking = true;
+            ExitSign.SetActive(false);
         }
 
         //temp controls for buttons 
@@ -163,6 +165,8 @@ public class ResumeCycle : MonoBehaviour
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+
+            ExitSign.SetActive(true);
 
             looking = false;
         }

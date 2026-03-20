@@ -33,6 +33,11 @@ public class CameraController : MonoBehaviour
     public KeyCode escapeKey;
     public float sensitivityLevel;
 
+
+    public GameObject emailExitSign;
+    public GameObject resumeExitSign;
+    public GameObject paperExitSign;
+
     private void Start()
     {
         // At the start, lock and hide the cursor
@@ -73,6 +78,9 @@ public class CameraController : MonoBehaviour
                 playerStatusManager.isDoingTyping = false;
                 playerStatusManager.isDoingResume = false;
                 playerStatusManager.isDoingSorting = false;
+                emailExitSign.SetActive(false);
+                resumeExitSign.SetActive(false);
+                paperExitSign.SetActive(false);
             }
 
             // Handle what the player clicks on, and what do to
@@ -112,6 +120,8 @@ public class CameraController : MonoBehaviour
                         cameraHolderObject.transform.position = cameraTypingPosition.position;
                         cameraHolderObject.transform.localEulerAngles = cameraTypingPosition.localEulerAngles;
                         playerStatusManager.isDoingTyping = true;
+
+                        emailExitSign.SetActive(true);
                     }
 
                     if (hit.collider.CompareTag("Resume Minigame"))
@@ -122,6 +132,8 @@ public class CameraController : MonoBehaviour
                         cameraHolderObject.transform.position = cameraResumePosition.position;
                         cameraHolderObject.transform.localEulerAngles = cameraResumePosition.localEulerAngles;
                         playerStatusManager.isDoingResume = true;
+
+                        resumeExitSign.SetActive(true);
                     }
 
                     if (hit.collider.CompareTag("Sorting Minigame"))
@@ -132,6 +144,9 @@ public class CameraController : MonoBehaviour
                         cameraHolderObject.transform.position = cameraSortingPosition.position;
                         cameraHolderObject.transform.localEulerAngles = cameraSortingPosition.localEulerAngles;
                         playerStatusManager.isDoingSorting = true;
+
+                        paperExitSign.SetActive(true);
+
                     }
 
                     if (hit.collider.CompareTag("Sort Complete Button"))

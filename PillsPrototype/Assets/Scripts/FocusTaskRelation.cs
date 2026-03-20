@@ -6,8 +6,8 @@ public class FocusTaskRelation : MonoBehaviour
 {
     PlayerStatusManager statusManager;
     public float difficultyLevel;
-    public PaperSortingScript1 sortingScript1;
-    public ResumeCycle ResumeCycle;
+    //public PaperSortingScript1 sortingScript1;
+    //public ResumeCycle ResumeCycle;
     // Start is called before the first frame update
     void Start()
     {
