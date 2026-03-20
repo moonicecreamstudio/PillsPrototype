@@ -8,6 +8,7 @@ public class PillBottleManager : MonoBehaviour
 {
     [Header("References")]
     public GameObject pillBottle;
+    public GameObject pillWarning;
     public SliderManager sliderStat;
     public Transform cameraPosition;
     public PillChoiceManager pillChoiceManager;
@@ -20,6 +21,7 @@ public class PillBottleManager : MonoBehaviour
     public bool isPillConsumed;
     public bool isPillCancelled;
     public float replenishAmount;
+    
 
     void Update()
     {
@@ -33,11 +35,13 @@ public class PillBottleManager : MonoBehaviour
             pillChoiceManager.pillBottleManager = this;
 
             // Move the pill towards the camera
+
             float step = speed * Time.deltaTime;
             float dist = Vector3.Distance(transform.position, cameraPosition.position);
             while (dist > cameraRadius)
             {
                 transform.position = Vector3.MoveTowards(transform.position, cameraPosition.position, step);
+                pillWarning.SetActive(true);
                 return;
             }
             isClickedOn = false;
@@ -54,6 +58,7 @@ public class PillBottleManager : MonoBehaviour
             transform.position = originPosition.position; // Return the pill to the original position
 
             isPillConsumed = false;
+            pillWarning.SetActive(false);
         }
 
         if (isPillCancelled == true)
@@ -64,6 +69,7 @@ public class PillBottleManager : MonoBehaviour
             transform.position = originPosition.position; // Return the pill to the original position
 
             isPillCancelled = false;
+            pillWarning.SetActive(false);
         }
     }
 }
