@@ -39410,7 +39410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1705058235}
   m_Layer: 0
-  m_Name: Focus Pill
+  m_Name: Focus Stimulant
   m_TagString: Focus Pill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
