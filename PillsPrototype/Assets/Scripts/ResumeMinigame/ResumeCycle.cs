@@ -21,12 +21,14 @@ public class ResumeCycle : MonoBehaviour
     public static bool looking;
     AudioSource audiosource;
     public KeyCode escapeKey;
+    bool BoldChoice;
 
     // Start is called before the first frame update
     void Start()
     {
         resumeList = new GameObject[easyResumes.transform.childCount];
 
+        BoldChoice = true;
 
         looking = true;
 
@@ -143,6 +145,32 @@ public class ResumeCycle : MonoBehaviour
             ExitSign.SetActive(false);
         }
 
+        if (!looking)
+        {
+            if ((FocusDifficult.difficultyLevel == 0) && !BoldChoice)
+            {
+                for (int i = 0; i < resumeList.Length; i++)
+                {
+                    resumeList[i].transform.GetChild(0).gameObject.SetActive(true);
+                    resumeList[i].transform.GetChild(1).gameObject.SetActive(false);
+
+                }
+                BoldChoice = true;
+            }
+            if ((FocusDifficult.difficultyLevel != 0) && BoldChoice)
+            {
+                for (int i = 0; i < resumeList.Length; i++)
+                {
+                    resumeList[i].transform.GetChild(0).gameObject.SetActive(false);
+                    resumeList[i].transform.GetChild(1).gameObject.SetActive(true);
+
+                }
+                BoldChoice = false;
+            }
+
+
+        }
+
         //temp controls for buttons 
         /*if (Input.GetKeyDown(KeyCode.D))
         {
@@ -225,15 +253,15 @@ public class ResumeCycle : MonoBehaviour
         }
 
 
-        GameObject[] resumeQualities = new GameObject[chosenResume.transform.childCount];
+        GameObject[] resumeQualities = new GameObject[chosenResume.transform.GetChild(0).childCount];
         for (int i = 0; i < resumeQualities.Length; i++)
         {
-            resumeQualities[i] = chosenResume.transform.GetChild(i).gameObject;
+            resumeQualities[i] = chosenResume.transform.GetChild(0).GetChild(i).gameObject;
             Debug.Log(resumeQualities[i]);
 
-            if (FocusDifficult.difficultyLevel == 0)
+            if (FocusDifficult.difficultyLevel == 3)
             {
-                if ((resumeQualities[i].name == firstquality) || (resumeQualities[i].name == secondquality))
+                if ((resumeQualities[i].name == firstquality))
                 {
 
                     PlusPoint();
@@ -243,13 +271,15 @@ public class ResumeCycle : MonoBehaviour
             }
             else
             {
-                if ((resumeQualities[i].name == firstquality))
+                if ((resumeQualities[i].name == firstquality) || (resumeQualities[i].name == secondquality))
                 {
 
                     PlusPoint();
                     ChoseCorrect = true;
                     break;
                 }
+
+                
             }
 
 
