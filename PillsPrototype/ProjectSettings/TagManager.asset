@@ -14,6 +14,7 @@ TagManager:
   - Typing Minigame
   - Resume Minigame
   - Clock
+  - EndDayEarly
   layers:
   - Default
   - TransparentFX

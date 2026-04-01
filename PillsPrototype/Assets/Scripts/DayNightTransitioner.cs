@@ -29,4 +29,12 @@ public class DayNightTransitioner : MonoBehaviour
         SceneManager.LoadScene(sceneName);
         yield break;
     }
+
+    public void EndDayEarly()
+    {
+        StartCoroutine(NextDay());
+
+    }
+
+
 }

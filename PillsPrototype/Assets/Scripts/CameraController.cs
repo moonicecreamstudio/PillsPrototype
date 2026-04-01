@@ -14,6 +14,7 @@ public class CameraController : MonoBehaviour
     public PillBottleManager focusBottle;
     public PillBottleManager energyBottle;
     public PillBottleManager calmnessBottle;
+    public EndDayEarly endDayEarly;
     public Camera cameraCamera;
     public GameObject cameraObject;
     public GameObject cameraHolderObject;
@@ -98,6 +99,14 @@ public class CameraController : MonoBehaviour
                     {
                         focusBottle.isClickedOn = true;
                         isCameraDisabled = true;
+                    }
+
+
+                    if (hit.collider.CompareTag("EndDayEarly"))
+                    {
+                        endDayEarly.isclickedOn = true;
+                        Debug.Log("why");
+                        //isCameraDisabled = true;
                     }
 
                     //if (hit.collider.CompareTag("Energy Pill"))
