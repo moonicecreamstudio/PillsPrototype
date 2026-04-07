@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenuManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class PauseMenuManager : MonoBehaviour
     public GameObject quitGameConfirm;
     public GameObject mainMenuConfirm;
     public GameObject optionsMenu;
+    public Slider clockSlider;
 
     [Header("Variables")]
     public static bool isGamePaused;
@@ -34,7 +36,7 @@ public class PauseMenuManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(pauseButton) )//&& playerStatusManager.isGameStarted == true)
+        if (Input.GetKeyDown(pauseButton) && clockSlider.value > 0)//&& playerStatusManager.isGameStarted == true)
         {
             StartCoroutine(PauseGame());
         }

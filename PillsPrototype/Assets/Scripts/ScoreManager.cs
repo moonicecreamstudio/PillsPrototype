@@ -12,6 +12,7 @@ public class ScoreManager : MonoBehaviour
     public PlayerStatusManager playerStatusManager;
     public Slider clockSlider;
     public Slider focusSlider;
+    //public SliderManager dayClock;
     public UIWindowMover uIWindowMover;
     public Radishmouse.UILinerRenderer uILinerRenderer;
     public TextMeshProUGUI emailsSent;
@@ -59,6 +60,13 @@ public class ScoreManager : MonoBehaviour
         if (clockSlider.value <= 0)
         {
             isDayOver = true;
+            if (Cursor.lockState == CursorLockMode.Locked)
+            {
+                
+                Cursor.lockState = CursorLockMode.None;
+            }
+            //dayClock.isActive = false;
+
         }
 
         // When the player has finished scoring
